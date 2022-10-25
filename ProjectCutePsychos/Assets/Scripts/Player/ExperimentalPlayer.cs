@@ -8,7 +8,7 @@ public class ExperimentalPlayer : MonoBehaviour
     public float minJumpHeight = 1;
     public float timeToJumpApex = .4f;
     float accelerationTimeAirborne = .2f;
-    float accelerationTimeGrounded = .1f;
+    float accelerationTimeGrounded = .05f;
     float moveSpeed = 6;
 
 
@@ -89,7 +89,7 @@ public class ExperimentalPlayer : MonoBehaviour
                 velocity.x = -wallDirX * wallLeap.x;
                 velocity.y = wallLeap.y;
             }
-            return;//hopefully this return doesnt break anything
+            return;
         }
         if (controller.collisions.below)
         {
