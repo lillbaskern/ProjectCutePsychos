@@ -32,7 +32,7 @@ public class ExperimentalPlayer : MonoBehaviour
     bool wallSliding;
     int wallDirX;
 
-    int availableDoubleJumps;//current amount of available double jumps
+    [SerializeField]int availableDoubleJumps;//current amount of available double jumps
     public int maxDoubleJumps = 1;//the max amount of potentially available double jumps. availabledoublejumps resets to this when player is grounded 
 
     void Start()
@@ -89,6 +89,7 @@ public class ExperimentalPlayer : MonoBehaviour
                 velocity.x = -wallDirX * wallLeap.x;
                 velocity.y = wallLeap.y;
             }
+            return;//hopefully this return doesnt break anything
         }
         if (controller.collisions.below)
         {
