@@ -10,10 +10,6 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Horizontal Movement")]
 
-<<<<<<< Updated upstream
-=======
-    [Header("Horizontal Movement")]
->>>>>>> Stashed changes
     public float moveSpeed = 5f;
 
     public float activeMoveSpeed;
@@ -47,15 +43,10 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private bool _isGrounded;
     public Transform groundCheck;
-<<<<<<< Updated upstream
 
     private float _checkGroundRadius;
 
     public LayerMask whatIsGround;
-=======
-    public LayerMask whatIsGroundMask;
-    public float checkGroundRadius;
->>>>>>> Stashed changes
 
     #endregion
 
@@ -115,7 +106,6 @@ public class PlayerMovement : MonoBehaviour
         //check if the player is grounded and reset available jumps if the player is grounded
         if (_isGrounded == true && canDoubleJump == true)
         {
-<<<<<<< Updated upstream
             _extraJumps = 1;
         }
 
@@ -126,16 +116,6 @@ public class PlayerMovement : MonoBehaviour
         //Move the player
         _rb2d.velocity = new Vector2(_moveInputX * activeMoveSpeed, _rb2d.velocity.y);
         #endregion
-=======
-            availableJumps = maxjumps;
-            canJump = true;
-        }
-
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 1f, whatIsGroundMask);
-
-        //Apply Motion Vectors.
-        rb.velocity = new Vector2(inputX * currentSpeed, rb.velocity.y);
->>>>>>> Stashed changes
 
         #region Dashing
         // If both the dash duration counter and the dash Cooldown is 0 or less the player can dash
@@ -167,7 +147,6 @@ public class PlayerMovement : MonoBehaviour
         //Wall
         _isTouchingFront = Physics2D.OverlapCircle(frontcheck.position, _checkWallRadius, whatIsWall);
 
-<<<<<<< Updated upstream
         if (_isTouchingFront == true && _isGrounded == false && _moveInputX != 0)
         {
             _wallSliding = true;
@@ -183,25 +162,13 @@ public class PlayerMovement : MonoBehaviour
         }
 
         #endregion
-=======
-        if (isDashing)
-        {
-
-        }
-
->>>>>>> Stashed changes
     }
 
     #region CallMoveFuntion
     //Call move function
     public void Move(InputAction.CallbackContext context)
     {
-<<<<<<< Updated upstream
         _moveInputX = context.ReadValue<Vector2>().x;
-=======
-        Debug.Log(context);
-        inputX = context.ReadValue<Vector2>().x;
->>>>>>> Stashed changes
     }
     #endregion
 
@@ -211,7 +178,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.performed)
         {
-<<<<<<< Updated upstream
             if (_extraJumps >= 0 && _isGrounded == true)
             {
                 _rb2d.velocity = Vector2.up * jumpForce;
@@ -220,17 +186,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 _rb2d.velocity = Vector2.up * jumpForce;
                 _extraJumps--;
-=======
-            if (availableJumps <= -1)
-            {
-                canJump = false;
-                return;//keep code from pogressing further if available jumps is lower than 0
-            }
-            if (availableJumps >= 0)//this if statement could be removed but it might be best to leave it for readability (elias)
-            {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-                availableJumps--;
->>>>>>> Stashed changes
             }
         }
     }
@@ -240,11 +195,7 @@ public class PlayerMovement : MonoBehaviour
     //Call Dash funtion
     public void Dash(InputAction.CallbackContext context)
     {
-<<<<<<< Updated upstream
         if (context.performed && _canDash)
-=======
-        if (context.performed && canDash)
->>>>>>> Stashed changes
         {
             activeMoveSpeed = dashSpeed;
             dashCounter = dashLength;
@@ -257,14 +208,10 @@ public class PlayerMovement : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
-<<<<<<< Updated upstream
         Gizmos.DrawWireSphere(groundCheck.position, _checkGroundRadius);
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(frontcheck.position, _checkWallRadius);
-=======
-        Gizmos.DrawWireSphere(groundCheck.position, checkGroundRadius);//if the Player is not set up correctly an error will redirect to here
->>>>>>> Stashed changes
     }
     #endregion
 }
