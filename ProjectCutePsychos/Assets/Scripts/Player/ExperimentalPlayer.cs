@@ -23,7 +23,7 @@ public class ExperimentalPlayer : MonoBehaviour
     float gravity;
     float maxJumpVelocity;
     float minJumpVelocity;
-    Vector3 velocity;
+    Vector3 velocity;//Maximum targetted velocity. 
     float velocityXSmoothing;
 
     ExperimentalController2D controller;
@@ -32,8 +32,9 @@ public class ExperimentalPlayer : MonoBehaviour
     bool wallSliding;
     int wallDirX;
 
-    [SerializeField]int availableDoubleJumps;//current amount of available double jumps
+    int availableDoubleJumps;//current amount of available double jumps
     public int maxDoubleJumps = 1;//the max amount of potentially available double jumps. availabledoublejumps resets to this when player is grounded 
+    [SerializeField]bool isBoosting;
 
     void Start()
     {
@@ -60,6 +61,7 @@ public class ExperimentalPlayer : MonoBehaviour
             }
             else
             {
+
                 velocity.y = 0;
             }
         }
@@ -67,6 +69,7 @@ public class ExperimentalPlayer : MonoBehaviour
 
     public void SetDirectionalInput(Vector2 input)
     {
+        if(isBoosting) return;
         directionalInput = input;
     }
 
@@ -157,6 +160,17 @@ public class ExperimentalPlayer : MonoBehaviour
 
         }
 
+    }
+
+
+    public IEnumerator Boost(float speedMultiplier, float duration){
+        float directionX = Mathf.Sign(velocity.x);
+        SetDirectionalInput(new Vector2(directionX,0f));
+        isBoosting = true;
+        moveSpeed = moveSpeed * speedMultiplier;
+        yield return new WaitForSeconds(duration);
+        isBoosting = false;
+        moveSpeed = moveSpeed / speedMultiplier;//Divison is very expensive. Could one maybe convert this into multiplication somehow?
     }
 
     void CalculateVelocity()
