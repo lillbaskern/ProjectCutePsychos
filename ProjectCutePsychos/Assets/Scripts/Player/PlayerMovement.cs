@@ -106,6 +106,7 @@ public class PlayerMovement : MonoBehaviour
         //check if the player is grounded and reset available jumps if the player is grounded
         if (_isGrounded == true && canDoubleJump == true)
         {
+            Debug.Log("is grounded and can double jump");
             _extraJumps = 1;
         }
 
