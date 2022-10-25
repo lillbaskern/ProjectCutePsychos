@@ -33,7 +33,7 @@ public class ExperimentalPlayer : MonoBehaviour
     int wallDirX;
 
     int availableDoubleJumps;//current amount of available double jumps
-    int maxDoubleJumps = 1;//the max amount of potentially available double jumps. availabledoublejumps resets to this when player is grounded 
+    public int maxDoubleJumps = 1;//the max amount of potentially available double jumps. availabledoublejumps resets to this when player is grounded 
 
     void Start()
     {
