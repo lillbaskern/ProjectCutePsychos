@@ -36,9 +36,12 @@ public class ExperimentalPlayer : MonoBehaviour
     public int maxDoubleJumps = 1;//the max amount of potentially available double jumps. availabledoublejumps resets to this when player is grounded 
     [SerializeField]bool isBoosting;
 
+    private SpriteRenderer _playerSprite;
+
     void Start()
     {
         controller = GetComponent<ExperimentalController2D>();
+        _playerSprite = GetComponent<SpriteRenderer>();
 
         gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
@@ -49,6 +52,8 @@ public class ExperimentalPlayer : MonoBehaviour
     {
         CalculateVelocity();
         HandleWallSliding();
+        float dirX = Mathf.Sign(velocity.x);
+        _playerSprite.flipX = dirX < 0;
 
         controller.Move(velocity * Time.deltaTime, directionalInput);
 
