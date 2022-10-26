@@ -38,7 +38,7 @@ public class ExperimentalPlayer : MonoBehaviour
 
     private SpriteRenderer _playerSprite;
 
-    void Awake()
+    void Awake() 
     {
         controller = GetComponent<ExperimentalController2D>();
         _playerSprite = GetComponent<SpriteRenderer>();
@@ -53,7 +53,6 @@ public class ExperimentalPlayer : MonoBehaviour
     {
         CalculateVelocity();
         HandleWallSliding();
-
 
         controller.Move(velocity * Time.deltaTime, directionalInput);
 
@@ -89,7 +88,6 @@ public class ExperimentalPlayer : MonoBehaviour
     {
         if (wallSliding)
         {
-
             if (wallDirX == directionalInput.x)
             {
                 velocity.x = -wallDirX * wallJumpClimb.x;
