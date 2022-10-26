@@ -176,6 +176,7 @@ public class ExperimentalPlayer : MonoBehaviour
         moveSpeed = moveSpeed * speedMultiplier;
         yield return new WaitForSeconds(duration);
         isBoosting = false;
+        input.PollDirection();//polldirection simply checks player input. Only doing it through unitevents would cause you to keep holding an input if input phase didnt change whilst isboosting is true
         moveSpeed = moveSpeed / speedMultiplier;//Divison is very expensive. Could one maybe convert this into multiplication somehow?
     }
 

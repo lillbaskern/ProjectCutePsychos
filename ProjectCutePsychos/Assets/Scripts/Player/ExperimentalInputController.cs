@@ -5,15 +5,24 @@ using UnityEngine.InputSystem;
 
 public class ExperimentalInputController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    PlayerInput playerInput;
+    InputAction direction;
     ExperimentalPlayer _player;
     Vector2 directionalInput;
     public Vector2 dirTest;
-    void Start()
+    void Awake()
     {
         _player = GetComponent<ExperimentalPlayer>();
+        playerInput = GetComponent<PlayerInput>();
+        direction = playerInput.actions["Move"];
     }
-    
+
+    public void PollDirection()
+    {
+        directionalInput = direction.ReadValue<Vector2>();
+        _player.SetDirectionalInput(directionalInput);
+        Debug.Log(directionalInput);
+    }
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -22,12 +31,8 @@ public class ExperimentalInputController : MonoBehaviour
     }
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed)
-        {
-            _player.OnJumpInputDown();
-        }
-        if(context.canceled){
-            _player.OnJumpInputUp();
-        }
+        if (context.performed) _player.OnJumpInputDown();
+
+        if (context.canceled) _player.OnJumpInputUp();
     }
 }
