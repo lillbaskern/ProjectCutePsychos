@@ -27,7 +27,7 @@ public class ExperimentalPlayer : MonoBehaviour
     float velocityXSmoothing;
 
     ExperimentalController2D controller;
-
+    ExperimentalInputController input;
     Vector2 directionalInput;
     bool wallSliding;
     int wallDirX;
@@ -38,10 +38,11 @@ public class ExperimentalPlayer : MonoBehaviour
 
     private SpriteRenderer _playerSprite;
 
-    void Start()
+    void Awake()
     {
         controller = GetComponent<ExperimentalController2D>();
         _playerSprite = GetComponent<SpriteRenderer>();
+        input = GetComponent<ExperimentalInputController>();
 
         gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
