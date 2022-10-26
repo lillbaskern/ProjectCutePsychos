@@ -909,6 +909,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 3917243742518016408, guid: 247672807d64d734383815b732dfd531, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917243742518016408, guid: 247672807d64d734383815b732dfd531, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 3917243742518016413, guid: 247672807d64d734383815b732dfd531, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -1714,6 +1722,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3917243742518016408, guid: 247672807d64d734383815b732dfd531, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917243742518016408, guid: 247672807d64d734383815b732dfd531, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 3917243742518016413, guid: 247672807d64d734383815b732dfd531, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -2192,6 +2208,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 3917243742518016408, guid: 247672807d64d734383815b732dfd531, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917243742518016408, guid: 247672807d64d734383815b732dfd531, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 3917243742518016413, guid: 247672807d64d734383815b732dfd531, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -2318,6 +2342,14 @@ PrefabInstance:
     - target: {fileID: 3917243742518016408, guid: 247672807d64d734383815b732dfd531, type: 3}
       propertyPath: m_Name
       value: Platform (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917243742518016408, guid: 247672807d64d734383815b732dfd531, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917243742518016408, guid: 247672807d64d734383815b732dfd531, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 3917243742518016413, guid: 247672807d64d734383815b732dfd531, type: 3}
       propertyPath: m_RootOrder
@@ -3511,6 +3543,14 @@ PrefabInstance:
     - target: {fileID: 3917243742518016408, guid: 247672807d64d734383815b732dfd531, type: 3}
       propertyPath: m_Name
       value: Platform (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917243742518016408, guid: 247672807d64d734383815b732dfd531, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917243742518016408, guid: 247672807d64d734383815b732dfd531, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 3917243742518016413, guid: 247672807d64d734383815b732dfd531, type: 3}
       propertyPath: m_RootOrder
@@ -5631,6 +5671,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 3917243742518016408, guid: 247672807d64d734383815b732dfd531, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917243742518016408, guid: 247672807d64d734383815b732dfd531, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 3917243742518016413, guid: 247672807d64d734383815b732dfd531, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -7499,6 +7547,14 @@ PrefabInstance:
     - target: {fileID: 3917243742518016408, guid: 247672807d64d734383815b732dfd531, type: 3}
       propertyPath: m_Name
       value: Platform (31)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917243742518016408, guid: 247672807d64d734383815b732dfd531, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917243742518016408, guid: 247672807d64d734383815b732dfd531, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 3917243742518016413, guid: 247672807d64d734383815b732dfd531, type: 3}
       propertyPath: m_RootOrder
@@ -9400,6 +9456,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 3917243742518016408, guid: 247672807d64d734383815b732dfd531, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3917243742518016413, guid: 247672807d64d734383815b732dfd531, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -10773,6 +10833,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 3917243742518016408, guid: 247672807d64d734383815b732dfd531, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917243742518016408, guid: 247672807d64d734383815b732dfd531, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 3917243742518016413, guid: 247672807d64d734383815b732dfd531, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -10837,6 +10905,14 @@ PrefabInstance:
     - target: {fileID: 3917243742518016408, guid: 247672807d64d734383815b732dfd531, type: 3}
       propertyPath: m_Name
       value: Platform (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917243742518016408, guid: 247672807d64d734383815b732dfd531, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917243742518016408, guid: 247672807d64d734383815b732dfd531, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 3917243742518016413, guid: 247672807d64d734383815b732dfd531, type: 3}
       propertyPath: m_RootOrder
