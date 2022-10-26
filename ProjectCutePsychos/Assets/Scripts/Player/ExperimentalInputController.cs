@@ -17,11 +17,10 @@ public class ExperimentalInputController : MonoBehaviour
         direction = playerInput.actions["Move"];
     }
 
-    public void PollDirection()
+    public void PollDirection()//if you just want to poll for a vector2 value, without requiring an input event to occur.
     {
         directionalInput = direction.ReadValue<Vector2>();
         _player.SetDirectionalInput(directionalInput);
-        Debug.Log(directionalInput);
     }
 
     public void OnMove(InputAction.CallbackContext context)
