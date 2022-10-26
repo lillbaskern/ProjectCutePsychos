@@ -38,7 +38,7 @@ public class ExperimentalPlayer : MonoBehaviour
 
     private SpriteRenderer _playerSprite;
 
-    void Start()
+    void Awake()
     {
         controller = GetComponent<ExperimentalController2D>();
         _playerSprite = GetComponent<SpriteRenderer>();
