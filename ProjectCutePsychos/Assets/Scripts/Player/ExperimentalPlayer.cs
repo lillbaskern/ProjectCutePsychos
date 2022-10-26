@@ -24,7 +24,7 @@ public class ExperimentalPlayer : MonoBehaviour
     float gravity;
     float maxJumpVelocity;
     float minJumpVelocity;
-    Vector3 velocity;//Maximum targetted velocity. 
+    Vector2 velocity;//Maximum targetted velocity. 
     float velocityXSmoothing;
 
     ExperimentalController2D controller;
