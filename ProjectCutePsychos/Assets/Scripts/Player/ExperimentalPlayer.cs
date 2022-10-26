@@ -34,7 +34,7 @@ public class ExperimentalPlayer : MonoBehaviour
 
     int availableDoubleJumps;//current amount of available double jumps
     public int maxDoubleJumps = 1;//the max amount of potentially available double jumps. availabledoublejumps resets to this when player is grounded 
-    [SerializeField]bool isBoosting;
+    [SerializeField] bool isBoosting;
 
     private SpriteRenderer _playerSprite;
 
@@ -53,8 +53,7 @@ public class ExperimentalPlayer : MonoBehaviour
     {
         CalculateVelocity();
         HandleWallSliding();
-        float dirX = Mathf.Sign(velocity.x);
-        _playerSprite.flipX = dirX < 0;
+
 
         controller.Move(velocity * Time.deltaTime, directionalInput);
 
@@ -71,11 +70,18 @@ public class ExperimentalPlayer : MonoBehaviour
                 velocity.y = 0;
             }
         }
+        if (wallSliding)
+        {
+            _playerSprite.flipX = controller.collisions.left? false: true;
+            return;
+        }
+        float dirX = Mathf.Sign(velocity.x);
+        _playerSprite.flipX = dirX < 0;
     }
 
     public void SetDirectionalInput(Vector2 input)
     {
-        if(isBoosting) return;
+        if (isBoosting) return;
         directionalInput = input;
     }
 
@@ -83,6 +89,7 @@ public class ExperimentalPlayer : MonoBehaviour
     {
         if (wallSliding)
         {
+
             if (wallDirX == directionalInput.x)
             {
                 velocity.x = -wallDirX * wallJumpClimb.x;
@@ -169,9 +176,10 @@ public class ExperimentalPlayer : MonoBehaviour
     }
 
 
-    public IEnumerator Boost(float speedMultiplier, float duration){
+    public IEnumerator Boost(float speedMultiplier, float duration)
+    {
         float directionX = Mathf.Sign(velocity.x);
-        SetDirectionalInput(new Vector2(directionX,0f));
+        SetDirectionalInput(new Vector2(directionX, 0f));
         isBoosting = true;
         moveSpeed = moveSpeed * speedMultiplier;
         yield return new WaitForSeconds(duration);
