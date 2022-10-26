@@ -203,7 +203,7 @@ public class ExperimentalPlayer : MonoBehaviour
         if (Mathf.Abs(targetVelocityX) < Mathf.Abs(velocity.x) && !InputtingOppositeDirections)//if were moving faster than the target speed and not inputting the opposite direction
         {
             targetVelocityX = velocity.x;
-            targetVelocityX *= 0.25f;
+            targetVelocityX *= 0.7f;
         }
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
         velocity.y += gravity * Time.deltaTime;
