@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 4510114451979784593}
   - component: {fileID: 4510114451979784592}
   - component: {fileID: 4510114451979784591}
+  - component: {fileID: -7288491718867958741}
+  - component: {fileID: -6478561693188577923}
   m_Layer: 8
   m_Name: AlternativePlayer
   m_TagString: Player
@@ -33,7 +35,8 @@ Transform:
   m_LocalPosition: {x: -4.64, y: -2.941, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6149958778591559273}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -124,6 +127,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 0c888826-e0e3-4513-a2ef-af7f26d46536
     m_ActionName: KeyBoard/Dash[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9f8c0a1d-6083-48e1-bfcd-2e08f86ec038
+    m_ActionName: KeyBoard/Attack[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: KeyBoard
@@ -193,7 +212,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 372b350c3b9141d478db8eaf5bd37530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dirTest: {x: 0, y: 0}
 --- !u!114 &4510114451979784592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,10 +249,111 @@ MonoBehaviour:
   maxJumpHeight: 4
   minJumpHeight: 1
   timeToJumpApex: 0.4
+  accelerationTimeAirborne: 0.34
+  accelerationTimeGrounded: 0.2
+  moveSpeed: 9
   wallJumpClimb: {x: 10, y: 10}
   wallJumpOff: {x: 0, y: 0}
   wallLeap: {x: 10, y: 15}
   wallSlideSpeedMax: 3
   wallStickTime: 0.25
+  dashSpeedX: 0
+  dashSpeedY: 0
+  dashCooldown: 0
   maxDoubleJumps: 1
-  isBoosting: 0
+  dontPollInputs: 0
+--- !u!114 &-7288491718867958741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5589506253127891523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d2b731a871125f4ab10f18b0d13c791, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  increaseValue: 1
+  amountCollected: 0
+  playerHP: {fileID: 0}
+--- !u!114 &-6478561693188577923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5589506253127891523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bede28c4ce8c2c84c9d563e20d721c58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timeToAttack: 0.25
+  _timer: 0
+--- !u!1001 &5213849650796360465
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5589506253127891525}
+    m_Modifications:
+    - target: {fileID: 2090332471349235064, guid: 878e54be24641b84ea180cc833fd3fe3, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090332471349235064, guid: 878e54be24641b84ea180cc833fd3fe3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090332471349235064, guid: 878e54be24641b84ea180cc833fd3fe3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090332471349235064, guid: 878e54be24641b84ea180cc833fd3fe3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090332471349235064, guid: 878e54be24641b84ea180cc833fd3fe3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090332471349235064, guid: 878e54be24641b84ea180cc833fd3fe3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090332471349235064, guid: 878e54be24641b84ea180cc833fd3fe3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090332471349235064, guid: 878e54be24641b84ea180cc833fd3fe3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090332471349235064, guid: 878e54be24641b84ea180cc833fd3fe3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090332471349235064, guid: 878e54be24641b84ea180cc833fd3fe3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090332471349235064, guid: 878e54be24641b84ea180cc833fd3fe3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090332471349235065, guid: 878e54be24641b84ea180cc833fd3fe3, type: 3}
+      propertyPath: m_Name
+      value: AttackArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090332471349235065, guid: 878e54be24641b84ea180cc833fd3fe3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 878e54be24641b84ea180cc833fd3fe3, type: 3}
+--- !u!4 &6149958778591559273 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2090332471349235064, guid: 878e54be24641b84ea180cc833fd3fe3, type: 3}
+  m_PrefabInstance: {fileID: 5213849650796360465}
+  m_PrefabAsset: {fileID: 0}

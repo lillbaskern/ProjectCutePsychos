@@ -123,11 +123,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""up"",
                     ""id"": ""8f687676-9eda-4192-afd8-aa7050a23f1a"",
-<<<<<<< HEAD
                     ""path"": ""<Keyboard>/semicolon"",
-=======
-                    ""path"": ""<Keyboard>/w"",
->>>>>>> Experimental-ACCEL-Character-Controller
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
