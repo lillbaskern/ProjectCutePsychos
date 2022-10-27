@@ -10,7 +10,8 @@ public class ExperimentalPlayer : MonoBehaviour
     [SerializeField] float accelerationTimeAirborne = .34f;
     [SerializeField] float accelerationTimeGrounded = .2f;
     [SerializeField] float moveSpeed = 9;
-    const float baseMoveSpeed = 9;
+
+    float baseMoveSpeed;
 
 
     public Vector2 wallJumpClimb;
@@ -47,6 +48,7 @@ public class ExperimentalPlayer : MonoBehaviour
 
     void Awake()
     {
+        baseMoveSpeed = moveSpeed;
         controller = GetComponent<ExperimentalController2D>();
         _playerSprite = GetComponent<SpriteRenderer>();
         input = GetComponent<ExperimentalInputController>();
