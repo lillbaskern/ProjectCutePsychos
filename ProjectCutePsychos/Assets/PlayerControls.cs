@@ -68,7 +68,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""5e9f7f60-a5bc-4b54-9ea6-aa4b771dddca"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""path"": ""<Keyboard>/k"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -123,7 +123,11 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""up"",
                     ""id"": ""8f687676-9eda-4192-afd8-aa7050a23f1a"",
+<<<<<<< HEAD
                     ""path"": ""<Keyboard>/semicolon"",
+=======
+                    ""path"": ""<Keyboard>/w"",
+>>>>>>> Experimental-ACCEL-Character-Controller
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

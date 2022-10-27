@@ -117,6 +117,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (_isGrounded == true && _canDoubleJump == true)
         {
+            Debug.Log("is grounded and can double jump");
             _extraJumps = 1;
         }
        
