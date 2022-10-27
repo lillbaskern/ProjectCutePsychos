@@ -14,6 +14,10 @@ public class PlayerMovement : MonoBehaviour
 
     public float activeMoveSpeed;
 
+    public float acceleration = 70;
+    public float deAcceleration = 50;
+    public float currentDirection;
+
     public float topSpeed;
     #endregion
 
@@ -54,10 +58,13 @@ public class PlayerMovement : MonoBehaviour
     [Header("Jump")]
 
     //MultiJump
+    [SerializeField] private bool _canJump;
 
     public float jumpForce;
 
-    public bool canDoubleJump;
+    public float doubleJumpForce;
+
+    [SerializeField] private bool _canDoubleJump;
 
     [SerializeField] private int _extraJumps;
 
@@ -93,6 +100,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        topSpeed = moveSpeed * 2;
         dashSpeed = moveSpeed * 4;
         activeMoveSpeed = moveSpeed;
         _rb2d = GetComponent<Rigidbody2D>();
@@ -104,18 +112,27 @@ public class PlayerMovement : MonoBehaviour
     {
         #region _isGrounded
         //check if the player is grounded and reset available jumps if the player is grounded
-        if (_isGrounded == true && canDoubleJump == true)
+
+        _isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.35f, whatIsGround);
+
+        if (_isGrounded == true && _canDoubleJump == true)
         {
             Debug.Log("is grounded and can double jump");
             _extraJumps = 1;
         }
-
-        _isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.35f, whatIsGround);
+       
         #endregion
 
         #region Horizontal Walk
         //Move the player
-        _rb2d.velocity = new Vector2(_moveInputX * activeMoveSpeed, _rb2d.velocity.y);
+        
+         _rb2d.velocity = new Vector2(_moveInputX * activeMoveSpeed, _rb2d.velocity.y);
+            
+        if (_moveInputX != 0)
+        {
+            CalculateSpeed();
+        }
+
         #endregion
 
         #region Dashing
@@ -124,7 +141,6 @@ public class PlayerMovement : MonoBehaviour
         {
             _canDash = true;
         }
-
         //Dash duration countdown and reset currentSpeed to moveSpeed
         if (dashCounter > 0)
         {
@@ -132,7 +148,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (dashCounter <= 0)
             {
-                activeMoveSpeed = moveSpeed;
+                activeMoveSpeed = topSpeed;
                 dashCoolDownCounter = dashCoolDown;
                 _canDash = false;
             }
@@ -165,6 +181,22 @@ public class PlayerMovement : MonoBehaviour
         #endregion
     }
 
+    //Calculate speed for acceleration
+    private void CalculateSpeed()
+    {
+        if(Mathf.Abs(_moveInputX) > 0)
+        {
+            activeMoveSpeed += acceleration * Time.deltaTime;
+        }
+        else
+        {
+            activeMoveSpeed -= deAcceleration * Time.deltaTime;
+        }
+
+        activeMoveSpeed = Mathf.Clamp(activeMoveSpeed, 0, topSpeed);
+    }
+
+
     #region CallMoveFuntion
     //Call move function
     public void Move(InputAction.CallbackContext context)
@@ -182,11 +214,14 @@ public class PlayerMovement : MonoBehaviour
             if (_extraJumps >= 0 && _isGrounded == true)
             {
                 _rb2d.velocity = Vector2.up * jumpForce;
+                Debug.Log("jump Pressed");
             }
+
             if (_extraJumps > 0 && _isGrounded == false)
             {
-                _rb2d.velocity = Vector2.up * jumpForce;
+                _rb2d.velocity = Vector2.up * doubleJumpForce;
                 _extraJumps--;
+                Debug.Log("jump Pressed while in air");
             }
         }
     }
