@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame ()
     {
-        SceneManager.LoadScene("HugoBossTest"); //Loads scene when called by event
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
 
     }
