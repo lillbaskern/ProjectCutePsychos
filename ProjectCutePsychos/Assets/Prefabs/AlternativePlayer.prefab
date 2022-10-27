@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 372b350c3b9141d478db8eaf5bd37530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dirTest: {x: 0, y: 0}
 --- !u!114 &4510114451979784592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,3 +236,5 @@ MonoBehaviour:
   wallLeap: {x: 10, y: 15}
   wallSlideSpeedMax: 3
   wallStickTime: 0.25
+  maxDoubleJumps: 1
+  isBoosting: 0

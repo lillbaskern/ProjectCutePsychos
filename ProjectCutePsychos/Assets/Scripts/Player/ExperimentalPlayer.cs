@@ -7,9 +7,10 @@ public class ExperimentalPlayer : MonoBehaviour
     public float maxJumpHeight = 4;
     public float minJumpHeight = 1;
     public float timeToJumpApex = .4f;
-    float accelerationTimeAirborne = .2f;
-    float accelerationTimeGrounded = .05f;
-    float moveSpeed = 6;
+    [SerializeField] float accelerationTimeAirborne = .34f;
+    [SerializeField] float accelerationTimeGrounded = .2f;
+    [SerializeField] float moveSpeed = 9;
+    const float baseMoveSpeed = 9;
 
 
     public Vector2 wallJumpClimb;
@@ -23,7 +24,7 @@ public class ExperimentalPlayer : MonoBehaviour
     float gravity;
     float maxJumpVelocity;
     float minJumpVelocity;
-    Vector3 velocity;//Maximum targetted velocity. 
+    Vector2 velocity;//Maximum targetted velocity. 
     float velocityXSmoothing;
 
     ExperimentalController2D controller;
@@ -31,10 +32,16 @@ public class ExperimentalPlayer : MonoBehaviour
     Vector2 directionalInput;
     bool wallSliding;
     int wallDirX;
+    float dirX;
 
     int availableDoubleJumps;//current amount of available double jumps
+
+    public float dashSpeedX;//x part of the dash vector
+    public float dashSpeedY;//y part of the resulting velocity vector from dashing
+    public float dashCooldown;
+    float nextDash = 0;//when time.time reaches this value the player can dash again
     public int maxDoubleJumps = 1;//the max amount of potentially available double jumps. availabledoublejumps resets to this when player is grounded 
-    [SerializeField] bool isBoosting;
+    [SerializeField] bool dontPollInputs;
 
     private SpriteRenderer _playerSprite;
 
@@ -66,22 +73,21 @@ public class ExperimentalPlayer : MonoBehaviour
             }
             else
             {
-
                 velocity.y = 0;
             }
         }
         if (wallSliding)
         {
-            _playerSprite.flipX = controller.collisions.left? false: true;
+            _playerSprite.flipX = controller.collisions.left ? false : true;
             return;
         }
-        float dirX = Mathf.Sign(velocity.x);
+        dirX = Mathf.Sign(velocity.x);
         _playerSprite.flipX = dirX < 0;
     }
 
     public void SetDirectionalInput(Vector2 input)
     {
-        if (isBoosting) return;
+        if (dontPollInputs) return;
         directionalInput = input;
     }
 
@@ -89,7 +95,6 @@ public class ExperimentalPlayer : MonoBehaviour
     {
         if (wallSliding)
         {
-
             if (wallDirX == directionalInput.x)
             {
                 velocity.x = -wallDirX * wallJumpClimb.x;
@@ -175,23 +180,44 @@ public class ExperimentalPlayer : MonoBehaviour
 
     }
 
-
     public IEnumerator Boost(float speedMultiplier, float duration)
     {
         float directionX = Mathf.Sign(velocity.x);
         SetDirectionalInput(new Vector2(directionX, 0f));
-        isBoosting = true;
+        dontPollInputs = true;
         moveSpeed = moveSpeed * speedMultiplier;
-        yield return new WaitForSeconds(duration);
-        isBoosting = false;
-        input.PollDirection();//polldirection simply checks player input. Only doing it through unitevents would cause you to keep holding an input if input phase didnt change whilst isboosting is true
-        moveSpeed = moveSpeed / speedMultiplier;//Divison is very expensive. Could one maybe convert this into multiplication somehow?
+        float dontPollFor = duration * 0.25f;
+        yield return new WaitForSeconds(dontPollFor);
+        dontPollInputs = false;
+        yield return new WaitForSeconds(duration - dontPollFor);
+        input.PollDirection();//polldirection checks player input independently from callbacks
+        ResetMoveSpeed();
+    }
+
+    //<summary>
+    //simple method which sets the dynamic moveSpeed variable to the const baseMoveSpeed;
+    public void ResetMoveSpeed()
+    {
+        moveSpeed = baseMoveSpeed;
     }
 
     void CalculateVelocity()
     {
         float targetVelocityX = directionalInput.x * moveSpeed;
+        bool InputtingOppositeDirections = targetVelocityX < 0f && velocity.x > 0f || targetVelocityX > 0f && velocity.x < 0f;
+        if (Mathf.Abs(targetVelocityX) < Mathf.Abs(velocity.x) && !InputtingOppositeDirections)//if were moving faster than the target speed and not inputting the opposite direction
+        {
+            targetVelocityX = velocity.x;
+            targetVelocityX *= 0.7f;
+        }
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
         velocity.y += gravity * Time.deltaTime;
+    }
+    public void Dash()
+    {
+        nextDash = Time.time + dashCooldown;
+        if(wallSliding) return;
+        velocity.x += dashSpeedX*dirX;
+        velocity.y = 3;
     }
 }
