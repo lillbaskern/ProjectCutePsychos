@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 2329381098931103167}
   - component: {fileID: 2329381098931103165}
   - component: {fileID: 2329381098931103164}
-  - component: {fileID: 2329381098931103162}
-  m_Layer: 0
+  - component: {fileID: 1271169555}
+  - component: {fileID: 1271169556}
+  m_Layer: 9
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,14 +45,14 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.15312696, y: -0.25743854}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.36, y: 0.28}
+    oldSize: {x: 2.25, y: 1.75}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -112,7 +113,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2329381098931103162
+--- !u!114 &1271169555
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,6 +125,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab180556209a57498b24a74da2db55b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 1
+  playerHP: {fileID: 0}
+--- !u!114 &1271169556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2329381098931103166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71450db333604874598b4721bc845e83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 3
+  maxHealth: 3
 --- !u!1 &2329381099262672795
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +150,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2329381099262672792}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RightCheck
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -164,7 +181,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2329381099756424047}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: leftCheck
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -196,9 +213,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2329381100087780158}
   - component: {fileID: 2329381100087780129}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EnemyPrefab
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
