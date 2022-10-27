@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerBasicAttack : MonoBehaviour
 {
-    private GameObject _attackArea = default;
+    [SerializeField] private GameObject _attackArea = default;
 
     private bool _attacking = false;
 
@@ -14,7 +14,7 @@ public class PlayerBasicAttack : MonoBehaviour
 
     private void Start()
     {
-        _attackArea = transform.GetChild(2).gameObject;
+        _attackArea = transform.GetChild(0).gameObject;
     }
 
     private void Update()
