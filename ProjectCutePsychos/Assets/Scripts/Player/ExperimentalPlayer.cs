@@ -32,8 +32,14 @@ public class ExperimentalPlayer : MonoBehaviour
     Vector2 directionalInput;
     bool wallSliding;
     int wallDirX;
+    float dirX;
 
     int availableDoubleJumps;//current amount of available double jumps
+
+    public float dashSpeedX;//x part of the dash vector
+    public float dashSpeedY;//y part of the resulting velocity vector from dashing
+    public float dashCooldown;
+    float nextDash = 0;//when time.time reaches this value the player can dash again
     public int maxDoubleJumps = 1;//the max amount of potentially available double jumps. availabledoublejumps resets to this when player is grounded 
     [SerializeField] bool dontPollInputs;
 
@@ -75,7 +81,7 @@ public class ExperimentalPlayer : MonoBehaviour
             _playerSprite.flipX = controller.collisions.left ? false : true;
             return;
         }
-        float dirX = Mathf.Sign(velocity.x);
+        dirX = Mathf.Sign(velocity.x);
         _playerSprite.flipX = dirX < 0;
     }
 
@@ -174,7 +180,6 @@ public class ExperimentalPlayer : MonoBehaviour
 
     }
 
-
     public IEnumerator Boost(float speedMultiplier, float duration)
     {
         float directionX = Mathf.Sign(velocity.x);
@@ -207,5 +212,12 @@ public class ExperimentalPlayer : MonoBehaviour
         }
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
         velocity.y += gravity * Time.deltaTime;
+    }
+    public void Dash()
+    {
+        nextDash = Time.time + dashCooldown;
+        if(wallSliding) return;
+        velocity.x += dashSpeedX*dirX;
+        velocity.y = 3;
     }
 }

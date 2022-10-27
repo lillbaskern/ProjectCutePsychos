@@ -9,7 +9,6 @@ public class ExperimentalInputController : MonoBehaviour
     InputAction direction;
     ExperimentalPlayer _player;
     Vector2 directionalInput;
-    public Vector2 dirTest;
     void Awake()
     {
         _player = GetComponent<ExperimentalPlayer>();
@@ -22,7 +21,10 @@ public class ExperimentalInputController : MonoBehaviour
         directionalInput = direction.ReadValue<Vector2>();
         _player.SetDirectionalInput(directionalInput);
     }
-
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        if(context.performed) _player.Dash();
+    }
     public void OnMove(InputAction.CallbackContext context)
     {
         directionalInput = context.ReadValue<Vector2>();
