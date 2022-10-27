@@ -21,9 +21,6 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
-        Destroy(gameObject, 1f);
-        GetComponent<Collider2D>().enabled = false;
-        GetComponent<PatrolEnemy>().enabled = false;
-        GetComponentInParent<EnemyPatrol>().enabled = false;
+        Destroy(gameObject);
     }
 }
