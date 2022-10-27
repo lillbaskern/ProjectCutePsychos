@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4510114451979784593}
   - component: {fileID: 4510114451979784592}
   - component: {fileID: 4510114451979784591}
+  - component: {fileID: 8288540175569720381}
   m_Layer: 8
   m_Name: AlternativePlayer
   m_TagString: Player
@@ -121,7 +122,19 @@ MonoBehaviour:
     m_ActionId: 5a7de023-4363-4ab4-818b-1df55313e2c7
     m_ActionName: KeyBoard/Jump[/Keyboard/w]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4510114451979784593}
+        m_TargetAssemblyTypeName: ExperimentalInputController, Assembly-CSharp
+        m_MethodName: OnDash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 0c888826-e0e3-4513-a2ef-af7f26d46536
     m_ActionName: KeyBoard/Dash[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
@@ -230,8 +243,37 @@ MonoBehaviour:
   maxJumpHeight: 4
   minJumpHeight: 1
   timeToJumpApex: 0.4
+  accelerationTimeAirborne: 0.34
+  accelerationTimeGrounded: 0.3
+  moveSpeed: 12
   wallJumpClimb: {x: 10, y: 10}
   wallJumpOff: {x: 0, y: 0}
   wallLeap: {x: 10, y: 15}
   wallSlideSpeedMax: 3
-  wallStickTime: 0.25
+  wallStickTime: 0.2
+  dashSpeedX: 8
+  dashSpeedY: 2
+  dashCooldown: 3
+  maxDoubleJumps: 1
+  dontPollInputs: 0
+--- !u!50 &8288540175569720381
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5589506253127891523}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
