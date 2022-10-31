@@ -476,7 +476,7 @@ PrefabInstance:
     - target: {fileID: 1772912092868161370, guid: a642a6197dbecc944b528b96c93824b5, type: 3}
       propertyPath: _playerHealth
       value: 
-      objectReference: {fileID: 880879622}
+      objectReference: {fileID: 0}
     - target: {fileID: 1772912092868161371, guid: a642a6197dbecc944b528b96c93824b5, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -567,17 +567,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a642a6197dbecc944b528b96c93824b5, type: 3}
---- !u!114 &880879622 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 880879622, guid: 312422e9ed42adc47a1327f890deec49, type: 3}
-  m_PrefabInstance: {fileID: 637658158}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49aa2b63b951e8140a8d818f9bea2038, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &880879631 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5589506253127891525, guid: 312422e9ed42adc47a1327f890deec49, type: 3}
@@ -1163,9 +1152,9 @@ GameObject:
   - component: {fileID: 1514585588}
   - component: {fileID: 1514585587}
   - component: {fileID: 1514585586}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Wall
-  m_TagString: Wall
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3208,6 +3197,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1868993531 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5589506253127891523, guid: 312422e9ed42adc47a1327f890deec49, type: 3}
+  m_PrefabInstance: {fileID: 637658158}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1868993539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868993531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49aa2b63b951e8140a8d818f9bea2038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 5
+  maxHealth: 5
+  _iFramesDuration: 1
+  _numberOfFlashes: 10
 --- !u!1001 &2054953751
 PrefabInstance:
   m_ObjectHideFlags: 0

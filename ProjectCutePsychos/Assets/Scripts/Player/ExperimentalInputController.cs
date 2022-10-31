@@ -5,20 +5,24 @@ using UnityEngine.InputSystem;
 
 public class ExperimentalInputController : MonoBehaviour
 {
-    PlayerInput playerInput;
-    InputAction direction;
+    PlayerInput _playerInput;
+    InputAction _direction;
     ExperimentalPlayer _player;
     Vector2 directionalInput;
+    public static bool PausePressed;
+
     void Awake()
     {
         _player = GetComponent<ExperimentalPlayer>();
-        playerInput = GetComponent<PlayerInput>();
-        direction = playerInput.actions["Move"];
+        _playerInput = GetComponent<PlayerInput>();
+        _direction = _playerInput.actions["Move"]; 
     }
+    
 
-    public void PollDirection()//if you just want to poll for a vector2 value, without requiring an input event to occur.
+
+    public void PollDirection()//if you just want to poll for a vector2 value without requiring an input event to occur.
     {
-        directionalInput = direction.ReadValue<Vector2>();
+        directionalInput = _direction.ReadValue<Vector2>();
         _player.SetDirectionalInput(directionalInput);
     }
     public void OnDash(InputAction.CallbackContext context)
