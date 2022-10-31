@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Enemy
   - MaxHealthItem
+  - BreabkAbleWall
   layers:
   - Default
   - TransparentFX

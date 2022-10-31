@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 4569072386211559703}
   - component: {fileID: 4569072386211559701}
   m_Layer: 8
-  m_Name: Player
+  m_Name: Old_Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,25 +133,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca802b40f7df003499debcc7a22e07c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 4569072386211559702}
   moveSpeed: 5
-  currentSpeed: 0
+  activeMoveSpeed: 0
+  acceleration: 70
+  deAcceleration: 50
+  currentDirection: 0
   topSpeed: 0
-  canDash: 0
+  _canDash: 0
   dashSpeed: 30
   dashLength: 0.2
   dashCoolDown: 1
   isDashing: 0
-  isGrounded: 0
+  _isGrounded: 0
   groundCheck: {fileID: 4569072387057189501}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  checkGroundRadius: 0.05
+  _canJump: 0
   jumpForce: 10
-  maxjumps: 0
-  availableJumps: 0
-  canJump: 0
+  doubleJumpForce: 0
+  _canDoubleJump: 0
+  _extraJumps: 0
+  _isTouchingFront: 0
+  frontcheck: {fileID: 4569072385875835375}
+  _wallSliding: 0
+  _checkWallRadius: 0
+  wallSlidingSpeed: 0
+  whatIsWall:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!50 &4569072386211559702
 Rigidbody2D:
   serializedVersion: 4
@@ -272,6 +282,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 0c888826-e0e3-4513-a2ef-af7f26d46536
     m_ActionName: KeyBoard/Dash[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9f8c0a1d-6083-48e1-bfcd-2e08f86ec038
+    m_ActionName: KeyBoard/Attack[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: KeyBoard
