@@ -33,7 +33,7 @@ public class ExperimentalPlayer : MonoBehaviour
     Vector2 directionalInput;
     bool wallSliding;
     int wallDirX;
-    [SerializeField] float dirX;
+    [SerializeField] public float dirX;
 
     int availableDoubleJumps;//current amount of available double jumps
 
@@ -60,6 +60,7 @@ public class ExperimentalPlayer : MonoBehaviour
 
     void Update()
     {
+        float lastDirX = dirX;
         CalculateVelocity();
         HandleWallSliding();
 
@@ -80,9 +81,12 @@ public class ExperimentalPlayer : MonoBehaviour
         if (wallSliding)
         {
             _playerSprite.flipX = controller.collisions.left ? false : true;
+            dirX = controller.collisions.left ? 1f: -1f; //if there are collisions on the left of the player set dirx to +1 (right), if not set it to -1 (left)
             return;
         }
-        dirX = Mathf.Sign(velocity.x);
+        if(velocity.x < 0.1f && velocity.x >-0.1f)//is this small enough
+            dirX = lastDirX;
+        dirX = Mathf.Sign(velocity.x); 
         _playerSprite.flipX = dirX < 0;
     }
 
