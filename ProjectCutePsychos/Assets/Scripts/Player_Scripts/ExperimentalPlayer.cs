@@ -33,7 +33,7 @@ public class ExperimentalPlayer : MonoBehaviour
     Vector2 directionalInput;
     bool wallSliding;
     int wallDirX;
-    float dirX;
+    [SerializeField] float dirX;
 
     int availableDoubleJumps;//current amount of available double jumps
 
