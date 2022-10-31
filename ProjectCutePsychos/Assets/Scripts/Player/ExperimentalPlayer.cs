@@ -46,7 +46,7 @@ public class ExperimentalPlayer : MonoBehaviour
 
     private SpriteRenderer _playerSprite;
 
-    void Awake()
+    void Awake() 
     {
         baseMoveSpeed = moveSpeed;
         controller = GetComponent<ExperimentalController2D>();
@@ -62,7 +62,6 @@ public class ExperimentalPlayer : MonoBehaviour
     {
         CalculateVelocity();
         HandleWallSliding();
-
 
         controller.Move(velocity * Time.deltaTime, directionalInput);
 
@@ -197,7 +196,7 @@ public class ExperimentalPlayer : MonoBehaviour
     }
 
     //<summary>
-    //simple method which sets the dynamic moveSpeed variable to the const baseMoveSpeed;
+    //simple method which sets the dynamic moveSpeed variable to baseMoveSpeed, which is set in start
     public void ResetMoveSpeed()
     {
         moveSpeed = baseMoveSpeed;
@@ -207,7 +206,7 @@ public class ExperimentalPlayer : MonoBehaviour
     {
         float targetVelocityX = directionalInput.x * moveSpeed;
         bool InputtingOppositeDirections = targetVelocityX < 0f && velocity.x > 0f || targetVelocityX > 0f && velocity.x < 0f;
-        if (Mathf.Abs(targetVelocityX) < Mathf.Abs(velocity.x) && !InputtingOppositeDirections)//if were moving faster than the target speed and not inputting the opposite direction
+        if (Mathf.Abs(targetVelocityX) < Mathf.Abs(velocity.x) && !InputtingOppositeDirections)//if we're moving faster than the target speed and not inputting the opposite direction
         {
             targetVelocityX = velocity.x;
             targetVelocityX *= 0.7f;
@@ -217,8 +216,11 @@ public class ExperimentalPlayer : MonoBehaviour
     }
     public void Dash()
     {
-        nextDash = Time.time + dashCooldown;
+        //guard clauses
         if(wallSliding) return;
+        if(Time.time < nextDash) return;
+        //Actually doing things
+        nextDash = Time.time + dashCooldown;
         velocity.x += dashSpeedX*dirX;
         velocity.y = 3;
     }

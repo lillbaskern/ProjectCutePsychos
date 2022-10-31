@@ -231,6 +231,7 @@ public class PlayerMovement : MonoBehaviour
     //Call Dash funtion
     public void Dash(InputAction.CallbackContext context)
     {
+        SceneController.LoadNext();
         if (context.performed && _canDash)
         {
             activeMoveSpeed = dashSpeed;
