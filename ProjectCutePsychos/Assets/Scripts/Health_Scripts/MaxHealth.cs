@@ -11,7 +11,7 @@ public class MaxHealth : MonoBehaviour
 
     public void Awake()
     {
-        playerHP = GetComponent<PlayerHealth>();
+        playerHP = GetComponentInParent<PlayerHealth>();
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
