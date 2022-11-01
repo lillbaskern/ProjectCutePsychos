@@ -226,6 +226,6 @@ public class ExperimentalPlayer : MonoBehaviour
         //Actually doing things
         nextDash = Time.time + dashCooldown;
         velocity.x += dashSpeedX*dirX;
-        velocity.y = 3;
+        velocity.y = 3f;
     }
 }
