@@ -1,7 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(ExperimentalController2D))]
+[RequireComponent(typeof(ExperimentalInputController))]
 public class ExperimentalPlayer : MonoBehaviour
 {
     public float maxJumpHeight = 4;
@@ -33,7 +33,7 @@ public class ExperimentalPlayer : MonoBehaviour
     Vector2 directionalInput;
     bool wallSliding;
     int wallDirX;
-    [SerializeField] public float dirX;
+    public int dirX;
 
     int availableDoubleJumps;//current amount of available double jumps
 
@@ -44,9 +44,11 @@ public class ExperimentalPlayer : MonoBehaviour
     public int maxDoubleJumps = 1;//the max amount of potentially available double jumps. availabledoublejumps resets to this when player is grounded 
     [SerializeField] bool dontPollInputs;
 
+    private Vector2 _spawnPos;
+
     private SpriteRenderer _playerSprite;
 
-    void Awake() 
+    void Awake()
     {
         baseMoveSpeed = moveSpeed;
         controller = GetComponent<ExperimentalController2D>();
@@ -56,11 +58,12 @@ public class ExperimentalPlayer : MonoBehaviour
         gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
+        _spawnPos = this.transform.position;
     }
 
     void Update()
     {
-        float lastDirX = dirX;
+        int lastDirX = dirX;
         CalculateVelocity();
         HandleWallSliding();
 
@@ -68,7 +71,6 @@ public class ExperimentalPlayer : MonoBehaviour
 
         if (controller.collisions.above || controller.collisions.below)
         {
-            availableDoubleJumps = maxDoubleJumps;
             if (controller.collisions.slidingDownMaxSlope)
             {
                 velocity.y += controller.collisions.slopeNormal.y * -gravity * Time.deltaTime;
@@ -78,15 +80,19 @@ public class ExperimentalPlayer : MonoBehaviour
                 velocity.y = 0;
             }
         }
+        if (controller.collisions.below)
+        {
+            availableDoubleJumps = maxDoubleJumps;
+        }
         if (wallSliding)
         {
-            _playerSprite.flipX = controller.collisions.left ? false : true;
-            dirX = controller.collisions.left ? 1f: -1f; //if there are collisions on the left of the player set dirx to +1 (right), if not set it to -1 (left)
+            _playerSprite.flipX = controller.collisions.left ? false : true; //set sprite orientation to face opposite of the wall youre sliding
+            dirX = controller.collisions.left ? 1 : -1; //if there are collisions on the left of the player set dirx to +1 (right), if not set it to -1 (left)
             return;
         }
-        if(velocity.x < 0.1f && velocity.x >-0.1f)//is this small enough
+        if (velocity.x > -0.1f && velocity.x < 0.1f)//is this small enough
             dirX = lastDirX;
-        dirX = Mathf.Sign(velocity.x); 
+        dirX = (int)Mathf.Sign(velocity.x);
         _playerSprite.flipX = dirX < 0;
     }
 
@@ -122,7 +128,7 @@ public class ExperimentalPlayer : MonoBehaviour
             if (controller.collisions.slidingDownMaxSlope)
             {
                 if (directionalInput.x != -Mathf.Sign(controller.collisions.slopeNormal.x))
-                { // not jumping against max slope
+                {
                     velocity.y = maxJumpVelocity * controller.collisions.slopeNormal.y;
                     velocity.x = maxJumpVelocity * controller.collisions.slopeNormal.x;
                 }
@@ -187,7 +193,7 @@ public class ExperimentalPlayer : MonoBehaviour
 
     public IEnumerator Boost(float speedMultiplier, float duration)
     {
-        float directionX = Mathf.Sign(velocity.x);
+        int directionX = (int)Mathf.Sign(velocity.x);
         SetDirectionalInput(new Vector2(directionX, 0f));
         dontPollInputs = true;
         moveSpeed = moveSpeed * speedMultiplier;
@@ -215,17 +221,46 @@ public class ExperimentalPlayer : MonoBehaviour
             targetVelocityX = velocity.x;
             targetVelocityX *= 0.7f;
         }
+        if (controller.collisions.below && velocity.x > -(moveSpeed / 2) && velocity.x < moveSpeed / 2 && directionalInput.y < 0)
+        {
+            targetVelocityX  = velocity.x;
+            targetVelocityX *= 0.1f;
+        }
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
         velocity.y += gravity * Time.deltaTime;
     }
     public void Dash()
     {
         //guard clauses
-        if(wallSliding) return;
-        if(Time.time < nextDash) return;
+        if (wallSliding) return;
+        if (Time.time < nextDash) return;
         //Actually doing things
         nextDash = Time.time + dashCooldown;
-        velocity.x += dashSpeedX*dirX;
+        velocity.x += dashSpeedX * dirX;
         velocity.y = 3f;
+    }
+
+    public void SetSpawnPos(Vector2 newPos)
+    {
+        if (_spawnPos != newPos)
+            _spawnPos = newPos;
+    }
+    public IEnumerator Respawn(float delay)
+    {
+        this.gameObject.SetActive(false);
+        yield return new WaitForSeconds(delay);
+        this.gameObject.SetActive(true);
+    }
+
+    private void OnDisable()
+    {
+        velocity = Vector2.zero;
+        ResetMoveSpeed();//to fix some bugs related to dying during a speed boost we reset movespeed here
+    }
+    private void OnEnable()
+    {
+        this.transform.position = _spawnPos;
+        velocity = Vector2.zero;
+        input.PollDirection();
     }
 }

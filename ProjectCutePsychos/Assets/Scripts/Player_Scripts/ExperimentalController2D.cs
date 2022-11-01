@@ -15,7 +15,6 @@ public class ExperimentalController2D : PlayerRays
         _rb2d = GetComponent<Rigidbody2D>();
 		base.Start ();
 		collisions.faceDir = 1;
-
 	}
 
 	public void Move(Vector2 moveAmount, bool standingOnPlatform) {
@@ -42,7 +41,6 @@ public class ExperimentalController2D : PlayerRays
 			VerticalCollisions (ref moveAmount);
 		}
 		transform.Translate  (moveAmount);
-        //_rb2d.velocity = moveAmount;
 
 		if (standingOnPlatform) {
 			collisions.below = true;

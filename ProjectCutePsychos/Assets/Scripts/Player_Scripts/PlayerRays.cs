@@ -29,7 +29,6 @@ public class PlayerRays : MonoBehaviour {
 
 	public virtual void Start() {
 		CalculateRaySpacing ();
-        
 	}
 
 	public void UpdateRaycastOrigins() {

@@ -22,7 +22,7 @@ public class MaxHealth : MonoBehaviour
             {
                 amountCollected++;
                 Destroy(other.gameObject, 0.1f);
-            }       
+            }
 
         //If the amount collected = 3 or higher increase the maxhealth by increasevalue and reset amount collected to 0 before destroying the gameobject.
             if (amountCollected >= 3)
