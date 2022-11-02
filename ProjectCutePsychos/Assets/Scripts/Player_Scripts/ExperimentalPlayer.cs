@@ -47,7 +47,7 @@ public class ExperimentalPlayer : MonoBehaviour
     private Vector2 _spawnPos;
 
     private SpriteRenderer _playerSprite;
-    
+
     void Awake()
     {
         baseMoveSpeed = moveSpeed;
@@ -157,6 +157,11 @@ public class ExperimentalPlayer : MonoBehaviour
 
     void HandleWallSliding()
     {
+        if(!controller.collisions.wallSlidingAllowed){
+            timeToWallUnstick = wallStickTime;
+            wallSliding = false;
+            return; // guard clause;
+        } 
         wallDirX = (controller.collisions.left) ? -1 : 1;
         wallSliding = false;
         if ((controller.collisions.left || controller.collisions.right) && !controller.collisions.below && velocity.y < 0)
