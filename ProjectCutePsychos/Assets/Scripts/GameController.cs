@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     public static GameController Instance { get; private set; }
     public Transform Player;
 
+
     void Start()
     {
         //setting up singleton
@@ -30,7 +31,7 @@ public class GameController : MonoBehaviour
     }
 
     //<Summary>
-    //Coroutine which respawns the player by setting the player as inactive, then waiting for "delay" amount of time, then reactivating the player
+    //Coroutine which respawns the player by setting the player as inactive, waiting for "delay" amount of time, then reactivating the player
     //the rest of the respawn functionality is done in OnEnable and OnDisable locally in the experimentalplayer script.
     //</Summary>
     public IEnumerator Respawn(float delay)
