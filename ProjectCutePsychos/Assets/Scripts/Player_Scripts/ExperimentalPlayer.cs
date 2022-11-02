@@ -47,7 +47,7 @@ public class ExperimentalPlayer : MonoBehaviour
     private Vector2 _spawnPos;
 
     private SpriteRenderer _playerSprite;
-
+    
     void Awake()
     {
         baseMoveSpeed = moveSpeed;
