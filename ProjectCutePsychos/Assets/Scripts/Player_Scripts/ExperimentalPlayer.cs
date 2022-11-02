@@ -7,11 +7,11 @@ public class ExperimentalPlayer : MonoBehaviour
     public float maxJumpHeight = 4;
     public float minJumpHeight = 1;
     public float timeToJumpApex = .4f;
-    [SerializeField] float _accelerationTimeAirborne = .34f;
-    [SerializeField] float _accelerationTimeGrounded = .2f;
-    [SerializeField] float _moveSpeed = 9;
+    [SerializeField] float accelerationTimeAirborne = .34f;
+    [SerializeField] float accelerationTimeGrounded = .2f;
+    [SerializeField] float moveSpeed = 9;
 
-    float _baseMoveSpeed;
+    float baseMoveSpeed;
 
 
     public Vector2 wallJumpClimb;
@@ -25,7 +25,7 @@ public class ExperimentalPlayer : MonoBehaviour
     float gravity;
     float maxJumpVelocity;
     float minJumpVelocity;
-    Vector2 velocity; //Maximum targetted velocity. 
+    Vector2 velocity;//Maximum targetted velocity. 
     float velocityXSmoothing;
 
     ExperimentalController2D controller;
@@ -44,13 +44,13 @@ public class ExperimentalPlayer : MonoBehaviour
     public int maxDoubleJumps = 1;//the max amount of potentially available double jumps. availabledoublejumps resets to this when player is grounded 
     [SerializeField] bool dontPollInputs;
 
-    private Vector2 spawnPoint; //where the player will respawn at. Is set to the players starting position in Awake(), and to any vector2 in SetSpawnPoint()
+    private Vector2 _spawnPos;
 
     private SpriteRenderer _playerSprite;
 
     void Awake()
     {
-        _baseMoveSpeed = _moveSpeed;
+        baseMoveSpeed = moveSpeed;
         controller = GetComponent<ExperimentalController2D>();
         _playerSprite = GetComponent<SpriteRenderer>();
         input = GetComponent<ExperimentalInputController>();
@@ -58,7 +58,7 @@ public class ExperimentalPlayer : MonoBehaviour
         gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
-        spawnPoint = this.transform.position;
+        _spawnPos = this.transform.position;
     }
 
     void Update()
@@ -104,7 +104,6 @@ public class ExperimentalPlayer : MonoBehaviour
 
     public void OnJumpInputDown()
     {
-        Debug.Log($"Wallsliding: {wallSliding}");
         if (wallSliding)
         {
             if (wallDirX == directionalInput.x)
@@ -158,12 +157,8 @@ public class ExperimentalPlayer : MonoBehaviour
 
     void HandleWallSliding()
     {
-        wallSliding = false;
-        if(!controller.collisions.wallSlidingAllowed) 
-            return; // guard clause
-
         wallDirX = (controller.collisions.left) ? -1 : 1;
-        
+        wallSliding = false;
         if ((controller.collisions.left || controller.collisions.right) && !controller.collisions.below && velocity.y < 0)
         {
             wallSliding = true;
@@ -201,7 +196,7 @@ public class ExperimentalPlayer : MonoBehaviour
         int directionX = (int)Mathf.Sign(velocity.x);
         SetDirectionalInput(new Vector2(directionX, 0f));
         dontPollInputs = true;
-        _moveSpeed = _moveSpeed * speedMultiplier;
+        moveSpeed = moveSpeed * speedMultiplier;
         float dontPollFor = duration * 0.25f;
         yield return new WaitForSeconds(dontPollFor);
         dontPollInputs = false;
@@ -214,24 +209,24 @@ public class ExperimentalPlayer : MonoBehaviour
     //simple method which sets the dynamic moveSpeed variable to baseMoveSpeed, which is set in start
     public void ResetMoveSpeed()
     {
-        _moveSpeed = _baseMoveSpeed;
+        moveSpeed = baseMoveSpeed;
     }
 
     void CalculateVelocity()
     {
-        float targetVelocityX = directionalInput.x * _moveSpeed;
+        float targetVelocityX = directionalInput.x * moveSpeed;
         bool InputtingOppositeDirections = targetVelocityX < 0f && velocity.x > 0f || targetVelocityX > 0f && velocity.x < 0f;
         if (Mathf.Abs(targetVelocityX) < Mathf.Abs(velocity.x) && !InputtingOppositeDirections)//if we're moving faster than the target speed and not inputting the opposite direction
         {
             targetVelocityX = velocity.x;
             targetVelocityX *= 0.7f;
         }
-        if (controller.collisions.below && velocity.x > -(_moveSpeed / 2) && velocity.x < _moveSpeed / 2 && directionalInput.y < -0.75)
+        if (controller.collisions.below && velocity.x > -(moveSpeed / 2) && velocity.x < moveSpeed / 2 && directionalInput.y < 0)
         {
             targetVelocityX  = velocity.x;
             targetVelocityX *= 0.1f;
         }
-        velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? _accelerationTimeGrounded : _accelerationTimeAirborne);
+        velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
         velocity.y += gravity * Time.deltaTime;
     }
     public void Dash()
@@ -247,8 +242,8 @@ public class ExperimentalPlayer : MonoBehaviour
 
     public void SetSpawnPos(Vector2 newPos)
     {
-        if (spawnPoint != newPos)
-            spawnPoint = newPos;
+        if (_spawnPos != newPos)
+            _spawnPos = newPos;
     }
     public IEnumerator Respawn(float delay)
     {
@@ -264,7 +259,7 @@ public class ExperimentalPlayer : MonoBehaviour
     }
     private void OnEnable()
     {
-        this.transform.position = spawnPoint;
+        this.transform.position = _spawnPos;
         velocity = Vector2.zero;
         input.PollDirection();
     }
