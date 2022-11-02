@@ -14,8 +14,8 @@ public class GameController : MonoBehaviour
         {
             if (!instance)
             {
-                var asdf = new GameObject("Game Controller");
-                instance = asdf.AddComponent<GameController>();
+                var temp = new GameObject("Game Controller");
+                instance = temp.AddComponent<GameController>();
                 instance.Init();
             }
             return instance;
