@@ -16,7 +16,7 @@ public class PlayerBasicAttack : MonoBehaviour
     {
         _attackArea = transform.GetChild(0).gameObject;
         _attackAreaLocalxPos = _attackArea.transform.localPosition.x;
-        _player = GetComponent<ExperimentalPlayer>();//concise, easily readable. porgramming
+        _player = GetComponent<ExperimentalPlayer>();
     }
 
     private void Update()
@@ -30,7 +30,6 @@ public class PlayerBasicAttack : MonoBehaviour
                 _timer = 0;
                 _attacking = false;
                 _attackArea.SetActive(_attacking);
-
             }
         }
     }

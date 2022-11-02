@@ -15,7 +15,6 @@ public class ExperimentalController2D : PlayerRays
         _rb2d = GetComponent<Rigidbody2D>();
 		base.Start ();
 		collisions.faceDir = 1;
-
 	}
 
 	public void Move(Vector2 moveAmount, bool standingOnPlatform) {
@@ -42,7 +41,6 @@ public class ExperimentalController2D : PlayerRays
 			VerticalCollisions (ref moveAmount);
 		}
 		transform.Translate  (moveAmount);
-        //_rb2d.velocity = moveAmount;
 
 		if (standingOnPlatform) {
 			collisions.below = true;
@@ -58,10 +56,11 @@ public class ExperimentalController2D : PlayerRays
 		}
 
 		for (int i = 0; i < horizontalRayCount; i ++) {
+            float prcntDone = (float)i/(horizontalRayCount-1);
 			Vector2 rayOrigin = (directionX == -1)?raycastOrigins.bottomLeft:raycastOrigins.bottomRight;
 			rayOrigin += Vector2.up * (horizontalRaySpacing * i);
 			RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, collisionMask);
-			Debug.DrawRay(rayOrigin, Vector2.right * directionX,Color.red);
+			Debug.DrawRay(rayOrigin, Vector2.right * directionX,Color.Lerp(Color.red,Color.white,prcntDone));
 
 			if (hit) {
 

@@ -12,10 +12,14 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float _iFramesDuration;
     [SerializeField] private int _numberOfFlashes;
     private SpriteRenderer spriteRend;
+    private ExperimentalPlayer _player;
+    
 
     private void Awake()
     {
         spriteRend = GetComponent<SpriteRenderer>();
+        _player = GetComponent<ExperimentalPlayer>();
+        Debug.Log(_player);
     }
 
     public void TakeDamage(int _damage)
@@ -24,17 +28,17 @@ public class PlayerHealth : MonoBehaviour
         {
             currentHealth -= _damage;
             StartCoroutine(Invulnerability());
-            Debug.Log("Took Damage");
         }
         if (currentHealth <= 0)
         {
+            Debug.Log("dead");
             Die();
         }
     }
 
     void Die()
     {
-        print("You died");
+        GameController.Instance.StartCoroutine(GameController.Instance.Respawn(1f));
     }
 
     public void RestoreHealth(int _healAmount)
@@ -64,4 +68,13 @@ public class PlayerHealth : MonoBehaviour
         Physics2D.IgnoreLayerCollision(8, 9, false);
     }
     #endregion
+
+
+    private void OnEnable() {
+        currentHealth = maxHealth;
+        Physics2D.IgnoreLayerCollision(8, 9, false);
+    }
+    private void OnDisable() {
+        spriteRend.color = Color.white;
+    }
 }
