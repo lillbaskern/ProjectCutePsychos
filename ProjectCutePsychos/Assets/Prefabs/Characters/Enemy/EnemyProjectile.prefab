@@ -70,7 +70,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 2
 --- !u!114 &6610616409678930302
 MonoBehaviour:
@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeb009addcd328349a400c6a25b79c0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectileSpeed: 10
+  _projectileSpeed: 10
   _damage: 1
 --- !u!212 &6610616409678930297
 SpriteRenderer:

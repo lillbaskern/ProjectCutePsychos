@@ -17,13 +17,13 @@ public class CoinTracker : MonoBehaviour
 
     private void Start()
     {
-        coinText.text = "COINS: " + currentCoins.ToString();
+        coinText.text = "X: " + currentCoins.ToString();
     }
 
     public void IncreaseCoins(int coins)
     {
         currentCoins += coins;
-        coinText.text = "COINS: "+ currentCoins.ToString();
+        coinText.text = "X: "+ currentCoins.ToString();
     }
 
 }
