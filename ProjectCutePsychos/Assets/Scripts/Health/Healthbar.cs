@@ -10,6 +10,7 @@ public class Healthbar : MonoBehaviour
 
     private void Start()
     {
+        _playerHealth = (PlayerHealth)FindObjectOfType(typeof(PlayerHealth));
         _maxHealthBar.fillAmount = (float)(_playerHealth.currentHealth * 0.1);
     }
 

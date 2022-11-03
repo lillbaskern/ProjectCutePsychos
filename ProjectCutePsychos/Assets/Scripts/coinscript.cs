@@ -8,10 +8,11 @@ public class coinscript : MonoBehaviour
 {
     public static bool initialized = false;
     GameObject[] coins;
-    void Start()
+    GameObject[] hearts;
+    IEnumerator Start()
     {
-        if (!initialized) { 
-            initialized = true;
+        yield return new WaitForEndOfFrame();
+        
             CoinTracker coinTrackerTemp = (CoinTracker)FindObjectOfType(typeof(CoinTracker));
             if (!coinTrackerTemp)
             {
@@ -26,9 +27,18 @@ public class coinscript : MonoBehaviour
                     BoxCollider2D boxCol = co.AddComponent<BoxCollider2D>();
                     boxCol.isTrigger = true;
                 }
-                co.AddComponent<CoinsCollected>();
             }
-        }
+            hearts = GameObject.FindGameObjectsWithTag("MaxHealthItem");
+            foreach (GameObject heart in hearts)
+            {
+                Collider2D colTemp = GetComponent<Collider2D>();
+                if (!colTemp)
+                {
+                    BoxCollider2D boxCol = heart.AddComponent<BoxCollider2D>();
+                    boxCol.isTrigger = true;
+                }
+            }
+        
     }
 
 }

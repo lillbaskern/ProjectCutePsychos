@@ -5,7 +5,7 @@ using UnityEngine;
 public class PatrolEnemy : MonoBehaviour
 {
     
-    [SerializeField] private int _damage;
+    [SerializeField] private int _damage = 0;
     public PlayerHealth playerHP;
 
     public void Awake()

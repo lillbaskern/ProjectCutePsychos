@@ -33,7 +33,7 @@ public class ExperimentalPlayer : MonoBehaviour
     Vector2 directionalInput;
     bool wallSliding;
     int wallDirX;
-    float dirX;
+    public int DirX;
 
     int availableDoubleJumps;//current amount of available double jumps
 
@@ -67,7 +67,6 @@ public class ExperimentalPlayer : MonoBehaviour
 
         if (controller.collisions.above || controller.collisions.below)
         {
-            availableDoubleJumps = maxDoubleJumps;
             if (controller.collisions.slidingDownMaxSlope)
             {
                 velocity.y += controller.collisions.slopeNormal.y * -gravity * Time.deltaTime;
@@ -77,13 +76,17 @@ public class ExperimentalPlayer : MonoBehaviour
                 velocity.y = 0;
             }
         }
+        if (controller.collisions.below)
+        {
+            availableDoubleJumps = maxDoubleJumps;
+        }
         if (wallSliding)
         {
             _playerSprite.flipX = controller.collisions.left ? false : true;
             return;
         }
-        dirX = Mathf.Sign(velocity.x);
-        _playerSprite.flipX = dirX < 0;
+        DirX = (int)Mathf.Sign(velocity.x);
+        _playerSprite.flipX = DirX < 0;
     }
 
     public void SetDirectionalInput(Vector2 input)
@@ -221,7 +224,7 @@ public class ExperimentalPlayer : MonoBehaviour
         if(Time.time < nextDash) return;
         //Actually doing things
         nextDash = Time.time + dashCooldown;
-        velocity.x += dashSpeedX*dirX;
+        velocity.x += dashSpeedX*DirX;
         velocity.y = 3;
     }
 }

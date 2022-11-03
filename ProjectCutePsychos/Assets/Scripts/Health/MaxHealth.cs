@@ -7,11 +7,11 @@ public class MaxHealth : MonoBehaviour
 {
     [SerializeField] private int increaseValue;
     [SerializeField] private int amountCollected;
-    public PlayerHealth playerHP;
+    private PlayerHealth playerHP;
 
     public void Awake()
     {
-        playerHP = GetComponent<PlayerHealth>();
+        playerHP = GetComponentInParent<PlayerHealth>();
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
