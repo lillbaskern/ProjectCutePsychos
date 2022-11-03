@@ -484,6 +484,7 @@ MonoBehaviour:
   wallLeap: {x: 10, y: 15}
   wallSlideSpeedMax: 3
   wallStickTime: 0.2
+  dirX: 0
   dashSpeedX: 8
   dashSpeedY: 2
   dashCooldown: 3
