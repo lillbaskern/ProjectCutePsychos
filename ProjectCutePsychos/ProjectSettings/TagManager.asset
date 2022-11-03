@@ -9,8 +9,6 @@ TagManager:
   - Enemy
   - MaxHealthItem
   - Breakable
-  - BreabkAbleWall
-
   layers:
   - Default
   - TransparentFX
