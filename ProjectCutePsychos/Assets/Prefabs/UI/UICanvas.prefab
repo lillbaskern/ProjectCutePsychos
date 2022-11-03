@@ -467,7 +467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9c66d3ed854ba4488ff83868246dc6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerHealth: {fileID: 0}
+  _playerHealth: {fileID: 880879639, guid: 312422e9ed42adc47a1327f890deec49, type: 3}
   _maxHealthBar: {fileID: 6400640370347715483}
   _currentHealthbar: {fileID: 991934995471323984}
 --- !u!1 &7836145389526973005
