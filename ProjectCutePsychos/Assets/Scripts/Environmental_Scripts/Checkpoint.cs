@@ -9,6 +9,7 @@ public class Checkpoint : MonoBehaviour
     private GameObject gameController;
     void Start()
     {
+
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<ExperimentalPlayer>();
     }
 
