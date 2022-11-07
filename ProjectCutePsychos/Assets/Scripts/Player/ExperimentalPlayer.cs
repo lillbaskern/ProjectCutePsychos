@@ -227,4 +227,9 @@ public class ExperimentalPlayer : MonoBehaviour
         velocity.x += dashSpeedX*DirX;
         velocity.y = 3;
     }
+    private void OnEnable()
+    {
+        ResetMoveSpeed();
+        input.PollDirection();
+    }
 }

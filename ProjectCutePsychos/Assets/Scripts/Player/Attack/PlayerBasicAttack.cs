@@ -28,7 +28,7 @@ public class PlayerBasicAttack : MonoBehaviour
     {
         if (_attacking)
         {
-            _attackArea.transform.localPosition = new Vector3(_attackAreaLocalxPos * _player.DirX, 0, 0);
+            _attackArea.transform.localPosition = new Vector3(_attackAreaLocalxPos * _player.DirX, 0, 0); // player.dirX is always either 1 or -1
             _timer += Time.deltaTime;
             if (_timer >= _timeToAttack)
             {

@@ -10,6 +10,8 @@ public class PlayerHealth : MonoBehaviour
     [Header("IFrames")]
     [SerializeField] private float _iFramesDuration;
     [SerializeField] private int _numberOfFlashes;
+    private bool invulnerable;
+    
     private SpriteRenderer spriteRend;
 
     private void Awake()
@@ -19,8 +21,10 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int _damage)
     {
+        
         if ( currentHealth > 0)
         {
+            if (invulnerable) return;
             currentHealth -= _damage;
             StartCoroutine(Invulnerability());
             Debug.Log("Took Damage");
@@ -51,7 +55,8 @@ public class PlayerHealth : MonoBehaviour
     #region IFrames
     private IEnumerator Invulnerability()
     {
-        Physics2D.IgnoreLayerCollision(8,9, true);
+        invulnerable = true;
+        //Physics2D.IgnoreLayerCollision(8,9, true);
         for (int i = 0; i < _numberOfFlashes; i++)
         {
             spriteRend.color = new Color(1, 0, 0, 0.5f);
@@ -62,7 +67,9 @@ public class PlayerHealth : MonoBehaviour
 
             yield return new WaitForSeconds(_iFramesDuration / (_numberOfFlashes * 2));
         }
-        Physics2D.IgnoreLayerCollision(8, 9, false);
+        invulnerable = false;
+        //Physics2D.IgnoreLayerCollision(8, 9, false); //i commented these out to just use a bool and it works so
+
     }
     #endregion
 }

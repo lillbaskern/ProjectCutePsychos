@@ -38,6 +38,7 @@ public class coinscript : MonoBehaviour
                     boxCol.isTrigger = true;
                 }
             }
+            //enemies = GameObject.FindGameObjectsWithTag("")
         
     }
 
