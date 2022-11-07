@@ -5300,12 +5300,24 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4510114451979784591, guid: 312422e9ed42adc47a1327f890deec49, type: 3}
+      propertyPath: dashSpeedX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510114451979784591, guid: 312422e9ed42adc47a1327f890deec49, type: 3}
+      propertyPath: dashSpeedY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510114451979784591, guid: 312422e9ed42adc47a1327f890deec49, type: 3}
       propertyPath: wallLeap.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4510114451979784591, guid: 312422e9ed42adc47a1327f890deec49, type: 3}
       propertyPath: wallLeap.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510114451979784591, guid: 312422e9ed42adc47a1327f890deec49, type: 3}
+      propertyPath: dashCooldown
+      value: 9999
       objectReference: {fileID: 0}
     - target: {fileID: 4510114451979784591, guid: 312422e9ed42adc47a1327f890deec49, type: 3}
       propertyPath: wallStickTime
