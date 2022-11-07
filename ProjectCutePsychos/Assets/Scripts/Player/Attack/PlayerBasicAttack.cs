@@ -17,8 +17,11 @@ public class PlayerBasicAttack : MonoBehaviour
 
     private ExperimentalPlayer _player;
 
+    [SerializeField] private SpriteRenderer _spriteRend;
+
     private void Start()
     {
+        _spriteRend = GetComponent<SpriteRenderer>();
         _attackArea = transform.GetChild(0).gameObject;
         _attackAreaLocalxPos = _attackArea.transform.localPosition.x;
         _player = GetComponent<ExperimentalPlayer>();//concise, easily readable. porgramming
@@ -28,14 +31,15 @@ public class PlayerBasicAttack : MonoBehaviour
     {
         if (_attacking)
         {
-            _attackArea.transform.localPosition = new Vector3(_attackAreaLocalxPos * _player.DirX, 0, 0); 
+            _spriteRend.flipX = true;
+            _attackArea.transform.localPosition = new Vector3(_attackAreaLocalxPos * _player.DirX, 0, 0);
             _timer += Time.deltaTime;
             if (_timer >= _timeToAttack)
             {
+                _spriteRend.flipX = false;
                 _timer = 0;
                 _attacking = false;
                 _attackArea.SetActive(_attacking);
-
             }
         }
     }

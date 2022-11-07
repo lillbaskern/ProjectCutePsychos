@@ -14,12 +14,10 @@ public class CoinTracker : MonoBehaviour
     {
         instance = this;
     }
-
     private void Start()
     {
         coinText.text = "X: " + currentCoins.ToString();
     }
-
     public void IncreaseCoins(int coins)
     {
         currentCoins += coins;

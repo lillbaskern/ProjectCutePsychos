@@ -17,6 +17,7 @@ public class PatrolEnemy : MonoBehaviour
         if (collision.tag == "Player")
         {
             PlayerHP.TakeDamage(_damage); //Call Take damage function do dmg = _damage.
+            Debug.Log("player Collision");
         }
     }
 }

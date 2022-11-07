@@ -47,12 +47,14 @@ public class RangedEnemy : MonoBehaviour
             enemyPatrol.enabled = !PlayerInSight();
     }
 
+    //Attack funtction
     private void rangeAttack()
     {
         cooldownTimer = 0;
         Instantiate(enemyProjectile, firepoint.position, firepoint.transform.rotation);
     }
 
+    //Raycast looking for playerLayer.
     private bool PlayerInSight()
     {
         RaycastHit2D hit = Physics2D.BoxCast(boxCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance,
@@ -63,6 +65,7 @@ public class RangedEnemy : MonoBehaviour
 
     }
 
+    // Draw the gizmos showing range when gameobject is selected
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
