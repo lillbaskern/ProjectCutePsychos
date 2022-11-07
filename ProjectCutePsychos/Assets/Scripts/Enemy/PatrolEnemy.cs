@@ -6,17 +6,17 @@ public class PatrolEnemy : MonoBehaviour
 {
     
     [SerializeField] private int _damage = 0;
-    public PlayerHealth playerHP;
+    public PlayerHealth PlayerHP;
 
     public void Awake()
     {
-        playerHP = FindObjectOfType<PlayerHealth>();
+        PlayerHP = FindObjectOfType<PlayerHealth>(); //Get object with the component "Player Health".
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            playerHP.TakeDamage(_damage);
+            PlayerHP.TakeDamage(_damage); //Call Take damage function do dmg = _damage.
         }
     }
 }

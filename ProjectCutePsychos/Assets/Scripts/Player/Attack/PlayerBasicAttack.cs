@@ -28,7 +28,7 @@ public class PlayerBasicAttack : MonoBehaviour
     {
         if (_attacking)
         {
-            _attackArea.transform.localPosition = new Vector3(_attackAreaLocalxPos * _player.DirX, 0, 0);
+            _attackArea.transform.localPosition = new Vector3(_attackAreaLocalxPos * _player.DirX, 0, 0); 
             _timer += Time.deltaTime;
             if (_timer >= _timeToAttack)
             {
@@ -41,13 +41,13 @@ public class PlayerBasicAttack : MonoBehaviour
     }
 
 
-    private void Attack()
+    private void Attack() // When called set "_attackArea" to active.
     {
         _attacking = true;
         _attackArea.SetActive(_attacking);
     }
 
-    public void BasicAttack(InputAction.CallbackContext context)
+    public void BasicAttack(InputAction.CallbackContext context) // If button pressed call Function
     {
         if (context.performed)
         {
