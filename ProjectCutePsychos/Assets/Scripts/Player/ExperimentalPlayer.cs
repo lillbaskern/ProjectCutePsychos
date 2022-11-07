@@ -46,7 +46,9 @@ public class ExperimentalPlayer : MonoBehaviour
 
     private SpriteRenderer _playerSprite;
 
-    void Awake() 
+    Vector2 spawnPos;
+
+    void Awake()
     {
         baseMoveSpeed = moveSpeed;
         controller = GetComponent<ExperimentalController2D>();
@@ -56,6 +58,7 @@ public class ExperimentalPlayer : MonoBehaviour
         gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
+        spawnPos = this.transform.position;
     }
 
     void Update()
@@ -220,15 +223,23 @@ public class ExperimentalPlayer : MonoBehaviour
     public void Dash()
     {
         //guard clauses
-        if(wallSliding) return;
-        if(Time.time < nextDash) return;
+        if (wallSliding) return;
+        if (Time.time < nextDash) return;
         //Actually doing things
         nextDash = Time.time + dashCooldown;
-        velocity.x += dashSpeedX*DirX;
+        velocity.x += dashSpeedX * DirX;
         velocity.y = 3;
     }
+
+    public void SetSpawnPos(Vector2 pos)
+    {
+        if(spawnPos != pos)
+            spawnPos = pos;
+    }
+
     private void OnEnable()
     {
+        this.transform.position = spawnPos;//set position to spawn
         ResetMoveSpeed();
         input.PollDirection();
     }
