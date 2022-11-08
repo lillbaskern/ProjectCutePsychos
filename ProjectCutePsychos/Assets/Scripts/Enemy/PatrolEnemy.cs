@@ -14,13 +14,13 @@ public class PatrolEnemy : MonoBehaviour
         Collider2D col = GetComponent<Collider2D>();
         if (!col)
         {
-            col = this.transform.AddComponent<PolygonCollider2D>();
-            col.isTrigger = true;
+            col = this.transform.AddComponent<PolygonCollider2D>();   
         }
+        col.isTrigger = true;
 
 
         playerHP = FindObjectOfType<PlayerHealth>();
-        Debug.Log(playerHP);
+        
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {

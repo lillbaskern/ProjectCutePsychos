@@ -59,6 +59,7 @@ public class GameController : MonoBehaviour
     //</Summary>
     public IEnumerator Respawn(float delay)
     {
+        Debug.Log(Player);
         Player.gameObject.SetActive(false);
         yield return new WaitForSeconds(delay);
         Player.gameObject.SetActive(true);

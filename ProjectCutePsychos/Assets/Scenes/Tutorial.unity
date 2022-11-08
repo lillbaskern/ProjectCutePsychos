@@ -5098,6 +5098,10 @@ PrefabInstance:
       value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4510114451979784591, guid: 312422e9ed42adc47a1327f890deec49, type: 3}
+      propertyPath: MaxDoubleJumps
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510114451979784591, guid: 312422e9ed42adc47a1327f890deec49, type: 3}
       propertyPath: maxDoubleJumps
       value: 0
       objectReference: {fileID: 0}
@@ -5309,11 +5313,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3525974196144782759, guid: 3db9f11ccb924f34bbec2e484feebba8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.7649755
+      value: -4.5926237
       objectReference: {fileID: 0}
     - target: {fileID: 3525974196144782759, guid: 3db9f11ccb924f34bbec2e484feebba8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.6796188
+      value: -1.2057877
       objectReference: {fileID: 0}
     - target: {fileID: 5555243339849783242, guid: 3db9f11ccb924f34bbec2e484feebba8, type: 3}
       propertyPath: m_Name
@@ -7904,6 +7908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e991fa12b124b40b0005b781eb38b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemiesInLevel: 0
 --- !u!1 &1318679307
 GameObject:
   m_ObjectHideFlags: 0

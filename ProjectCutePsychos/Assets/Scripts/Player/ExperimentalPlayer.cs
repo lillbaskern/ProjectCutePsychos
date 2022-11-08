@@ -41,7 +41,7 @@ public class ExperimentalPlayer : MonoBehaviour
     public float dashSpeedY;//y part of the resulting velocity vector from dashing
     public float dashCooldown;
     float nextDash = 0;//when time.time reaches this value the player can dash again
-    public int maxDoubleJumps = 1;//the max amount of potentially available double jumps. availabledoublejumps resets to this when player is grounded 
+    public int MaxDoubleJumps;//the max amount of potentially available double jumps. availabledoublejumps resets to this when player is grounded 
     [SerializeField] bool dontPollInputs;
 
     private SpriteRenderer _playerSprite;
@@ -54,6 +54,7 @@ public class ExperimentalPlayer : MonoBehaviour
         controller = GetComponent<ExperimentalController2D>();
         _playerSprite = GetComponent<SpriteRenderer>();
         input = GetComponent<ExperimentalInputController>();
+        availableDoubleJumps = MaxDoubleJumps;
 
         gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
@@ -81,11 +82,12 @@ public class ExperimentalPlayer : MonoBehaviour
         }
         if (controller.collisions.below)
         {
-            availableDoubleJumps = maxDoubleJumps;
+            availableDoubleJumps = MaxDoubleJumps;
         }
         if (wallSliding)
         {
             _playerSprite.flipX = controller.collisions.left ? false : true;
+            DirX = controller.collisions.left ? 1 : -1;
             return;
         }
         DirX = (int)Mathf.Sign(velocity.x);
@@ -240,7 +242,7 @@ public class ExperimentalPlayer : MonoBehaviour
     private void OnEnable()
     {
         this.transform.position = spawnPos;//set position to spawn
+        velocity = Vector2.zero;
         ResetMoveSpeed();
-        input.PollDirection();
     }
 }

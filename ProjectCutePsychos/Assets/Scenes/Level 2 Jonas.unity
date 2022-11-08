@@ -698,6 +698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e991fa12b124b40b0005b781eb38b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemiesInLevel: 0
 --- !u!1001 &1998056740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -705,6 +706,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4510114451979784591, guid: 312422e9ed42adc47a1327f890deec49, type: 3}
+      propertyPath: MaxDoubleJumps
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5589506253127891523, guid: 312422e9ed42adc47a1327f890deec49, type: 3}
       propertyPath: m_Name
       value: AlternativePlayer
@@ -2704,11 +2709,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6276167712138838554, guid: f7cd85050b0bb134b807a530119c4d12, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.183449
+      value: -14.644352
       objectReference: {fileID: 0}
     - target: {fileID: 6276167712138838554, guid: f7cd85050b0bb134b807a530119c4d12, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -28.856672
+      value: -27.039652
       objectReference: {fileID: 0}
     - target: {fileID: 6276167713216596885, guid: f7cd85050b0bb134b807a530119c4d12, type: 3}
       propertyPath: m_Layer

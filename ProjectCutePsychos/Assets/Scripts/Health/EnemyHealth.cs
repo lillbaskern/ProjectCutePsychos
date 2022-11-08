@@ -18,6 +18,10 @@ public class EnemyHealth : MonoBehaviour
             Die();
         }
     }
+    public void SetHP(int input)
+    {
+        currentHealth = Mathf.Clamp(input, 1, maxHealth);
+    }
 
     void Die()
     {
