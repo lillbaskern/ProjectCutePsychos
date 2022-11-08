@@ -1733,6 +1733,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1117264040, guid: 99110a50606c1484086f8ef404d2f2fa, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117264040, guid: 99110a50606c1484086f8ef404d2f2fa, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117264040, guid: 99110a50606c1484086f8ef404d2f2fa, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -782.7422
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117264040, guid: 99110a50606c1484086f8ef404d2f2fa, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -303.4231
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117264040, guid: 99110a50606c1484086f8ef404d2f2fa, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117264040, guid: 99110a50606c1484086f8ef404d2f2fa, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117264041, guid: 99110a50606c1484086f8ef404d2f2fa, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7a525497e75e0b54baf6bb8d65fac4be, type: 3}
+    - target: {fileID: 1253703077, guid: 99110a50606c1484086f8ef404d2f2fa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5168116918299255452, guid: 99110a50606c1484086f8ef404d2f2fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
