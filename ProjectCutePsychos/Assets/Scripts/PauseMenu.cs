@@ -13,6 +13,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject controlsMenuUI;
 
+
     private void Start() {
         //making sure there is only one instance of this class active at a time.
         //this
@@ -83,6 +84,13 @@ public class PauseMenu : MonoBehaviour
     public void LoadMenu() //Load Main Menu
     {
         SceneManager.LoadScene(0);
+
+    }
+
+    public void Restart()
+    {
+        pauseMenuUI.SetActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
     }
 
