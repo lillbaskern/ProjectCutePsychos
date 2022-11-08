@@ -5,14 +5,14 @@ using TMPro;
 
 public class CoinTracker : MonoBehaviour
 {
-    public static CoinTracker instance;
+    public static CoinTracker Instance;
 
     public TMP_Text coinText;
     public int currentCoins = 0;
 
     private void Awake()
     {
-        instance = this;
+        Instance = this;
     }
     private void Start()
     {

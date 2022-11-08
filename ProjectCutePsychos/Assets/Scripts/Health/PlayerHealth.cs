@@ -50,6 +50,7 @@ public class PlayerHealth : MonoBehaviour
     public void IncreaseMaxHealth(int _incraseAmount)
     {
         maxHealth += _incraseAmount;
+        PlayerPrefs.SetInt("HP", maxHealth);
     }
 
     #region IFrames
@@ -77,6 +78,7 @@ public class PlayerHealth : MonoBehaviour
         invulnerable = false;
         Physics2D.IgnoreLayerCollision(8, 9, false);
         spriteRend.color = Color.white;
+        maxHealth = PlayerPrefs.GetInt("HP", 3);
         currentHealth = maxHealth;
     }
 }

@@ -56,7 +56,7 @@ public class coinscript : MonoBehaviour
             {
                nmy = enemy.AddComponent<EnemyHealth>();
             }
-            nmy.SetHP(1);
+            // nmy.SetHP(2);
         }
 
 
