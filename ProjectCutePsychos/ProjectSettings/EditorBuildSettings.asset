@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TempFinal.unity
     guid: cfc001ff8ddcf2f49b13253f72118191
+  - enabled: 1
+    path: Assets/Scenes/ThanksForPlaying.unity
+    guid: c45b303105facbf41a7bb78a62d3cb3f
+  - enabled: 1
+    path: Assets/Scenes/CreditScene.unity
+    guid: 978a740de327b394db02102cadc73317
   m_configObjects: {}

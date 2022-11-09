@@ -46,15 +46,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Dash"",
-                    ""type"": ""Button"",
-                    ""id"": ""0c888826-e0e3-4513-a2ef-af7f26d46536"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Attack"",
                     ""type"": ""Button"",
                     ""id"": ""9f8c0a1d-6083-48e1-bfcd-2e08f86ec038"",
@@ -65,17 +56,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""5e9f7f60-a5bc-4b54-9ea6-aa4b771dddca"",
-                    ""path"": ""<Keyboard>/k"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": """",
                     ""id"": ""3d9401c2-9c6a-4822-8e82-eb18bb54db5f"",
@@ -89,34 +69,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d352c6d6-82d1-4141-986e-80bd498e40ec"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""bed0ba29-7b68-475e-a9f5-496fb6b97c29"",
+                    ""id"": ""7fe4eb2e-621f-4e81-a92b-9ad86d46af5e"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Dash"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""99e79af3-18d9-493c-85b8-51e7131eaaca"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Dash"",
+                    ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -130,28 +88,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""8f687676-9eda-4192-afd8-aa7050a23f1a"",
-                    ""path"": ""<Keyboard>/semicolon"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""7b06bb5c-a582-4cd8-b2bd-a37212711b93"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""left"",
@@ -232,8 +168,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""106a5e63-2f62-47bb-b339-b29f44f7fdec"",
-                    ""path"": ""<Keyboard>/j"",
+                    ""id"": ""70b35f5d-a606-452c-96e8-e24016b7467a"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -243,8 +179,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""70b35f5d-a606-452c-96e8-e24016b7467a"",
-                    ""path"": ""<Keyboard>/j"",
+                    ""id"": ""0c78ede6-7c32-49f9-b9e2-c8810b6c90bd"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -261,7 +197,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_KeyBoard = asset.FindActionMap("KeyBoard", throwIfNotFound: true);
         m_KeyBoard_Move = m_KeyBoard.FindAction("Move", throwIfNotFound: true);
         m_KeyBoard_Jump = m_KeyBoard.FindAction("Jump", throwIfNotFound: true);
-        m_KeyBoard_Dash = m_KeyBoard.FindAction("Dash", throwIfNotFound: true);
         m_KeyBoard_Attack = m_KeyBoard.FindAction("Attack", throwIfNotFound: true);
     }
 
@@ -324,7 +259,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private IKeyBoardActions m_KeyBoardActionsCallbackInterface;
     private readonly InputAction m_KeyBoard_Move;
     private readonly InputAction m_KeyBoard_Jump;
-    private readonly InputAction m_KeyBoard_Dash;
     private readonly InputAction m_KeyBoard_Attack;
     public struct KeyBoardActions
     {
@@ -332,7 +266,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public KeyBoardActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_KeyBoard_Move;
         public InputAction @Jump => m_Wrapper.m_KeyBoard_Jump;
-        public InputAction @Dash => m_Wrapper.m_KeyBoard_Dash;
         public InputAction @Attack => m_Wrapper.m_KeyBoard_Attack;
         public InputActionMap Get() { return m_Wrapper.m_KeyBoard; }
         public void Enable() { Get().Enable(); }
@@ -349,9 +282,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Jump.started -= m_Wrapper.m_KeyBoardActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_KeyBoardActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_KeyBoardActionsCallbackInterface.OnJump;
-                @Dash.started -= m_Wrapper.m_KeyBoardActionsCallbackInterface.OnDash;
-                @Dash.performed -= m_Wrapper.m_KeyBoardActionsCallbackInterface.OnDash;
-                @Dash.canceled -= m_Wrapper.m_KeyBoardActionsCallbackInterface.OnDash;
                 @Attack.started -= m_Wrapper.m_KeyBoardActionsCallbackInterface.OnAttack;
                 @Attack.performed -= m_Wrapper.m_KeyBoardActionsCallbackInterface.OnAttack;
                 @Attack.canceled -= m_Wrapper.m_KeyBoardActionsCallbackInterface.OnAttack;
@@ -365,9 +295,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
-                @Dash.started += instance.OnDash;
-                @Dash.performed += instance.OnDash;
-                @Dash.canceled += instance.OnDash;
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
@@ -379,7 +306,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnDash(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
     }
 }

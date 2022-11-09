@@ -378,6 +378,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 0
+  _iFramesDuration: 0
+  _numberOfFlashes: 0
+  spriteRend: {fileID: 0}
 --- !u!61 &46236592
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1227,6 +1230,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 0
+  _iFramesDuration: 0
+  _numberOfFlashes: 0
+  spriteRend: {fileID: 0}
 --- !u!61 &692293698
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1608,6 +1614,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 0
+  _iFramesDuration: 0
+  _numberOfFlashes: 0
+  spriteRend: {fileID: 0}
 --- !u!61 &785006841
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2250,6 +2259,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 0
+  _iFramesDuration: 0
+  _numberOfFlashes: 0
+  spriteRend: {fileID: 0}
 --- !u!61 &1085887373
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2420,6 +2432,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 0
+  _iFramesDuration: 0
+  _numberOfFlashes: 0
+  spriteRend: {fileID: 0}
 --- !u!61 &1322170879
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2947,6 +2962,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 0
+  _iFramesDuration: 0
+  _numberOfFlashes: 0
+  spriteRend: {fileID: 0}
 --- !u!61 &1654700564
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3443,6 +3461,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 0
+  _iFramesDuration: 0
+  _numberOfFlashes: 0
+  spriteRend: {fileID: 0}
 --- !u!61 &1823803997
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3569,6 +3590,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 0
+  _iFramesDuration: 0
+  _numberOfFlashes: 0
+  spriteRend: {fileID: 0}
 --- !u!61 &1863314123
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3898,6 +3922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e991fa12b124b40b0005b781eb38b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemiesInLevel: 0
 --- !u!1 &1953423310
 GameObject:
   m_ObjectHideFlags: 0
@@ -3999,11 +4024,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5589506253127891525, guid: 312422e9ed42adc47a1327f890deec49, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 108.6
+      value: 82.71
       objectReference: {fileID: 0}
     - target: {fileID: 5589506253127891525, guid: 312422e9ed42adc47a1327f890deec49, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 25.22
+      value: 22.93
       objectReference: {fileID: 0}
     - target: {fileID: 5589506253127891525, guid: 312422e9ed42adc47a1327f890deec49, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6224,11 +6249,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6276167712138838554, guid: f7cd85050b0bb134b807a530119c4d12, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 101.735374
+      value: 75.845375
       objectReference: {fileID: 0}
     - target: {fileID: 6276167712138838554, guid: f7cd85050b0bb134b807a530119c4d12, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.7365723
+      value: -4.0265713
       objectReference: {fileID: 0}
     - target: {fileID: 6276167713216596885, guid: f7cd85050b0bb134b807a530119c4d12, type: 3}
       propertyPath: m_Layer
@@ -6244,11 +6269,11 @@ PrefabInstance:
       objectReference: {fileID: 1020389355}
     - target: {fileID: 6276167713336896543, guid: f7cd85050b0bb134b807a530119c4d12, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 101.735374
+      value: 75.845375
       objectReference: {fileID: 0}
     - target: {fileID: 6276167713336896543, guid: f7cd85050b0bb134b807a530119c4d12, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.7365723
+      value: -4.0265713
       objectReference: {fileID: 0}
     - target: {fileID: 6297738294208503953, guid: f7cd85050b0bb134b807a530119c4d12, type: 3}
       propertyPath: m_Layer
