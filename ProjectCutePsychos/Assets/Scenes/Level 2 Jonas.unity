@@ -5534,6 +5534,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1563596880255608844, guid: 956c02047ccc6ad48919ff61b74357b7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563596880255608844, guid: 956c02047ccc6ad48919ff61b74357b7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7836145389526973005, guid: 956c02047ccc6ad48919ff61b74357b7, type: 3}
       propertyPath: m_Name
       value: UICanvas
@@ -5542,6 +5550,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8629423866304402101, guid: 956c02047ccc6ad48919ff61b74357b7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 08cafaa1ca310694f85ebd6c34aecd05, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 956c02047ccc6ad48919ff61b74357b7, type: 3}
 --- !u!1001 &1417330588
