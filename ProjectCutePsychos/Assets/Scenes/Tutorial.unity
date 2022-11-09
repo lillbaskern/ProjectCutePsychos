@@ -5675,7 +5675,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7668226856326277618, guid: ac455a4d2386e8f4baf853cbda100ff9, type: 3}
       propertyPath: m_text
-      value: Press "J" to attack and break walls
+      value: Press "W" to attack and break walls
       objectReference: {fileID: 0}
     - target: {fileID: 7668226856326277618, guid: ac455a4d2386e8f4baf853cbda100ff9, type: 3}
       propertyPath: m_margin.z
