@@ -5565,6 +5565,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1634971851}
     m_Modifications:
+    - target: {fileID: 2589821730462508550, guid: 868668991f341814388bb12398b6be8f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589821730462508550, guid: 868668991f341814388bb12398b6be8f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6516298847669440217, guid: 868668991f341814388bb12398b6be8f, type: 3}
       propertyPath: m_Name
       value: Heal (5)
@@ -6304,6 +6312,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1634971851}
     m_Modifications:
+    - target: {fileID: 2589821730462508550, guid: 868668991f341814388bb12398b6be8f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589821730462508550, guid: 868668991f341814388bb12398b6be8f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6516298847669440217, guid: 868668991f341814388bb12398b6be8f, type: 3}
       propertyPath: m_Name
       value: Heal (4)
@@ -8780,6 +8796,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1634971851}
     m_Modifications:
+    - target: {fileID: 389490495839997873, guid: 868668991f341814388bb12398b6be8f, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589821730462508550, guid: 868668991f341814388bb12398b6be8f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589821730462508550, guid: 868668991f341814388bb12398b6be8f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6516298847669440217, guid: 868668991f341814388bb12398b6be8f, type: 3}
       propertyPath: m_Name
       value: Heal
@@ -8926,13 +8954,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1634971851}
     m_Modifications:
+    - target: {fileID: 2087129037607770184, guid: b6feea7edcf43a24cb06c04bbeb8fa3e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7033310976991655152, guid: b6feea7edcf43a24cb06c04bbeb8fa3e, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 3f7ea89eaf3779a46a05337633b6f21d, type: 3}
     - target: {fileID: 7033310976991655152, guid: b6feea7edcf43a24cb06c04bbeb8fa3e, type: 3}
       propertyPath: m_SortingOrder
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7033310976991655153, guid: b6feea7edcf43a24cb06c04bbeb8fa3e, type: 3}
       propertyPath: m_Name
@@ -8944,19 +8976,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7033310976991655154, guid: b6feea7edcf43a24cb06c04bbeb8fa3e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.28
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7033310976991655154, guid: b6feea7edcf43a24cb06c04bbeb8fa3e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.28
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7033310976991655154, guid: b6feea7edcf43a24cb06c04bbeb8fa3e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.14
+      value: -9.89
       objectReference: {fileID: 0}
     - target: {fileID: 7033310976991655154, guid: b6feea7edcf43a24cb06c04bbeb8fa3e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.5021133
+      value: 4.7521133
       objectReference: {fileID: 0}
     - target: {fileID: 7033310976991655154, guid: b6feea7edcf43a24cb06c04bbeb8fa3e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13672,6 +13704,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1634971851}
     m_Modifications:
+    - target: {fileID: 2589821730462508550, guid: 868668991f341814388bb12398b6be8f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2589821730462508550, guid: 868668991f341814388bb12398b6be8f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6516298847669440217, guid: 868668991f341814388bb12398b6be8f, type: 3}
       propertyPath: m_Name
       value: Heal (6)
