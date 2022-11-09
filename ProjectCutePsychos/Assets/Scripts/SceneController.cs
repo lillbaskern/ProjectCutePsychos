@@ -19,4 +19,12 @@ public static class SceneController
         SceneManager.LoadScene(current.buildIndex);
     }
 
+    public static IEnumerator RespawnPlayer()//disable and re-enable the player
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.SetActive(false);
+        yield return new WaitForSeconds(1.2f);
+        player.SetActive(true);
+    }
+
 }

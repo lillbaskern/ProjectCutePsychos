@@ -41,21 +41,25 @@ public class ExperimentalPlayer : MonoBehaviour
     public float dashSpeedY;//y part of the resulting velocity vector from dashing
     public float dashCooldown;
     float nextDash = 0;//when time.time reaches this value the player can dash again
-    public int maxDoubleJumps = 1;//the max amount of potentially available double jumps. availabledoublejumps resets to this when player is grounded 
+    public int MaxDoubleJumps;//the max amount of potentially available double jumps. availabledoublejumps resets to this when player is grounded 
     [SerializeField] bool dontPollInputs;
 
     private SpriteRenderer _playerSprite;
 
-    void Awake() 
+    Vector2 spawnPos;
+
+    void Awake()
     {
         baseMoveSpeed = moveSpeed;
         controller = GetComponent<ExperimentalController2D>();
         _playerSprite = GetComponent<SpriteRenderer>();
         input = GetComponent<ExperimentalInputController>();
+        availableDoubleJumps = MaxDoubleJumps;
 
         gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
+        spawnPos = this.transform.position;
     }
 
     void Update()
@@ -78,11 +82,12 @@ public class ExperimentalPlayer : MonoBehaviour
         }
         if (controller.collisions.below)
         {
-            availableDoubleJumps = maxDoubleJumps;
+            availableDoubleJumps = MaxDoubleJumps;
         }
         if (wallSliding)
         {
             _playerSprite.flipX = controller.collisions.left ? false : true;
+            DirX = controller.collisions.left ? 1 : -1;
             return;
         }
         DirX = (int)Mathf.Sign(velocity.x);
@@ -209,22 +214,35 @@ public class ExperimentalPlayer : MonoBehaviour
     {
         float targetVelocityX = directionalInput.x * moveSpeed;
         bool InputtingOppositeDirections = targetVelocityX < 0f && velocity.x > 0f || targetVelocityX > 0f && velocity.x < 0f;
-        if (Mathf.Abs(targetVelocityX) < Mathf.Abs(velocity.x) && !InputtingOppositeDirections)//if we're moving faster than the target speed and not inputting the opposite direction
-        {
-            targetVelocityX = velocity.x;
-            targetVelocityX *= 0.7f;
-        }
+        // if (Mathf.Abs(targetVelocityX) < Mathf.Abs(velocity.x) && !InputtingOppositeDirections)//if we're moving faster than the target speed and not inputting the opposite direction
+        // {
+        //     targetVelocityX = velocity.x;
+        //     targetVelocityX *= 0.7f;
+        // }
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
         velocity.y += gravity * Time.deltaTime;
     }
     public void Dash()
     {
         //guard clauses
-        if(wallSliding) return;
-        if(Time.time < nextDash) return;
+        if (wallSliding) return;
+        if (Time.time < nextDash) return;
         //Actually doing things
         nextDash = Time.time + dashCooldown;
-        velocity.x += dashSpeedX*DirX;
+        velocity.x += dashSpeedX * DirX;
         velocity.y = 3;
+    }
+
+    public void SetSpawnPos(Vector2 pos)
+    {
+        if(spawnPos != pos)
+            spawnPos = pos;
+    }
+
+    private void OnEnable()
+    {
+        this.transform.position = spawnPos;//set position to spawn
+        velocity = Vector2.zero;
+        ResetMoveSpeed();
     }
 }
