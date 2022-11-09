@@ -31,12 +31,10 @@ public class PlayerBasicAttack : MonoBehaviour
     {
         if (_attacking)
         {
-            _spriteRend.flipX = true;
             _attackArea.transform.localPosition = new Vector3(_attackAreaLocalxPos * _player.DirX, 0, 0);
             _timer += Time.deltaTime;
             if (_timer >= _timeToAttack)
             {
-                _spriteRend.flipX = false;
                 _timer = 0;
                 _attacking = false;
                 _attackArea.SetActive(_attacking);
@@ -45,13 +43,13 @@ public class PlayerBasicAttack : MonoBehaviour
     }
 
 
-    private void Attack() // When called set "_attackArea" to active.
+    private void Attack() //When called, set "_attackArea" to active.
     {
         _attacking = true;
         _attackArea.SetActive(_attacking);
     }
 
-    public void BasicAttack(InputAction.CallbackContext context) // If button pressed call Function
+    public void BasicAttack(InputAction.CallbackContext context) //If button pressed call Function
     {
         if (context.performed)
         {

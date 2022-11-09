@@ -46,8 +46,12 @@ public class ExperimentalPlayer : MonoBehaviour
 
     private SpriteRenderer _playerSprite;
 
+    [SerializeField] private GameObject _rollArea = default;
+    private bool _rolling = false;
+
     void Awake() 
     {
+        _rollArea = transform.GetChild(2).gameObject;
         baseMoveSpeed = moveSpeed;
         controller = GetComponent<ExperimentalController2D>();
         _playerSprite = GetComponent<SpriteRenderer>();
@@ -87,6 +91,11 @@ public class ExperimentalPlayer : MonoBehaviour
         }
         DirX = (int)Mathf.Sign(velocity.x);
         _playerSprite.flipX = DirX < 0;
+
+        if (velocity.x < 5 && velocity.x > -5)
+        {
+            RollUp();
+        }
     }
 
     public void SetDirectionalInput(Vector2 input)
@@ -126,12 +135,12 @@ public class ExperimentalPlayer : MonoBehaviour
                     velocity.x = maxJumpVelocity * controller.collisions.slopeNormal.x;
                 }
             }
-            else
+            else if (controller.collisions.below && !_rolling)
             {
                 velocity.y = maxJumpVelocity;
             }
         }
-        if (!controller.collisions.below && !controller.collisions.above && availableDoubleJumps > 0)
+        if (!controller.collisions.below && !controller.collisions.above && availableDoubleJumps > 0 && !_rolling)
         {
             velocity.y = maxJumpVelocity;
             availableDoubleJumps--;
@@ -226,5 +235,25 @@ public class ExperimentalPlayer : MonoBehaviour
         nextDash = Time.time + dashCooldown;
         velocity.x += dashSpeedX*DirX;
         velocity.y = 3;
+    }
+
+    public void RollDown()
+    {
+        if (velocity.x > 8 || velocity.x < -8)
+        {
+            _rolling = true;
+            _rollArea.SetActive(_rolling);
+            GetComponent<SpriteRenderer>().enabled = false;
+            Physics2D.IgnoreLayerCollision(8, 9, true);
+            Debug.Log("rolling");
+        }
+    }
+
+    public void RollUp()
+    {
+            _rolling = false;
+            _rollArea.SetActive(_rolling);
+            GetComponent<SpriteRenderer>().enabled = true;
+            Physics2D.IgnoreLayerCollision(8, 9, false);
     }
 }

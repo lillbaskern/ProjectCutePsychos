@@ -36,4 +36,12 @@ public class ExperimentalInputController : MonoBehaviour
 
         if (context.canceled) _player.OnJumpInputUp();
     }
-}
+    public void OnRoll(InputAction.CallbackContext context)
+    {
+        if (context.performed) _player.RollDown();
+
+        if (context.canceled) _player.RollUp();
+    }
+
+
+    }

@@ -62,6 +62,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Roll"",
+                    ""type"": ""Button"",
+                    ""id"": ""de020cff-6966-4e47-9933-502ef337f0bb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -121,6 +130,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
+                    ""name"": """",
+                    ""id"": ""6d742755-6326-4363-8dc6-9f442b555e5a"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
                     ""name"": ""2D Vector"",
                     ""id"": ""779ffc8f-a886-4ed0-ac9c-354ac7a64daf"",
                     ""path"": ""2DVector"",
@@ -130,28 +150,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""8f687676-9eda-4192-afd8-aa7050a23f1a"",
-                    ""path"": ""<Keyboard>/semicolon"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""7b06bb5c-a582-4cd8-b2bd-a37212711b93"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""left"",
@@ -185,28 +183,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""017521fc-7f60-4edd-991c-2996a2858d31"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""b5511c21-dec1-4e9f-b69d-01050780da9f"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""left"",
@@ -251,6 +227,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b5664d31-de84-4eec-b69d-0cb4ed25ac15"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3d4e3f80-a27d-43ab-9dd4-5ddbebd6b439"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -263,6 +261,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_KeyBoard_Jump = m_KeyBoard.FindAction("Jump", throwIfNotFound: true);
         m_KeyBoard_Dash = m_KeyBoard.FindAction("Dash", throwIfNotFound: true);
         m_KeyBoard_Attack = m_KeyBoard.FindAction("Attack", throwIfNotFound: true);
+        m_KeyBoard_Roll = m_KeyBoard.FindAction("Roll", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -326,6 +325,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_KeyBoard_Jump;
     private readonly InputAction m_KeyBoard_Dash;
     private readonly InputAction m_KeyBoard_Attack;
+    private readonly InputAction m_KeyBoard_Roll;
     public struct KeyBoardActions
     {
         private @PlayerControls m_Wrapper;
@@ -334,6 +334,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_KeyBoard_Jump;
         public InputAction @Dash => m_Wrapper.m_KeyBoard_Dash;
         public InputAction @Attack => m_Wrapper.m_KeyBoard_Attack;
+        public InputAction @Roll => m_Wrapper.m_KeyBoard_Roll;
         public InputActionMap Get() { return m_Wrapper.m_KeyBoard; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -355,6 +356,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Attack.started -= m_Wrapper.m_KeyBoardActionsCallbackInterface.OnAttack;
                 @Attack.performed -= m_Wrapper.m_KeyBoardActionsCallbackInterface.OnAttack;
                 @Attack.canceled -= m_Wrapper.m_KeyBoardActionsCallbackInterface.OnAttack;
+                @Roll.started -= m_Wrapper.m_KeyBoardActionsCallbackInterface.OnRoll;
+                @Roll.performed -= m_Wrapper.m_KeyBoardActionsCallbackInterface.OnRoll;
+                @Roll.canceled -= m_Wrapper.m_KeyBoardActionsCallbackInterface.OnRoll;
             }
             m_Wrapper.m_KeyBoardActionsCallbackInterface = instance;
             if (instance != null)
@@ -371,6 +375,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
+                @Roll.started += instance.OnRoll;
+                @Roll.performed += instance.OnRoll;
+                @Roll.canceled += instance.OnRoll;
             }
         }
     }
@@ -381,5 +388,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
+        void OnRoll(InputAction.CallbackContext context);
     }
 }
