@@ -1,23 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PatrolEnemy : MonoBehaviour
 {
     
-    [SerializeField] private int _damage = 0;
-    public PlayerHealth PlayerHP;
+    [SerializeField] private int _damage = 1;
+    public PlayerHealth playerHP;
 
     public void Awake()
     {
-        PlayerHP = FindObjectOfType<PlayerHealth>(); //Get object with the component "Player Health".
+        Collider2D col = GetComponent<Collider2D>();
+        if (!col)
+        {
+            col = this.transform.AddComponent<PolygonCollider2D>();   
+        }
+        col.isTrigger = true;
+
+
+        playerHP = FindObjectOfType<PlayerHealth>();
+        
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            PlayerHP.TakeDamage(_damage); //Call Take damage function do dmg = _damage.
-            Debug.Log("player Collision");
+            playerHP.TakeDamage(_damage);
         }
     }
 }

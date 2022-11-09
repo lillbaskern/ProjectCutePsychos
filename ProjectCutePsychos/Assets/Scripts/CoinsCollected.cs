@@ -14,7 +14,7 @@ public class CoinsCollected : MonoBehaviour
         if (other.tag == "Coin")
         {            
             Destroy(other.gameObject);
-            CoinTracker.instance.IncreaseCoins(value);
+            CoinTracker.Instance.IncreaseCoins(value);
         }
 
     }

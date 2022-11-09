@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    public static PauseMenu Current { get; private set; }//singleton for this class. since this uses dontdestroyonload i want to use this here to prevent duplicates of the pause menu
     public static bool GameIsPaused = false;
 
     public static bool GameIsPausedShowingControls = false;
@@ -12,8 +13,19 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject controlsMenuUI;
 
+
     private void Start() {
-        DontDestroyOnLoad(this);
+        //making sure there is only one instance of this class active at a time.
+        //this
+        if(Current != null && Current != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Current = this;
+            DontDestroyOnLoad(this);
+        }
     }
 
     // Update is called once per frame
@@ -72,6 +84,13 @@ public class PauseMenu : MonoBehaviour
     public void LoadMenu() //Load Main Menu
     {
         SceneManager.LoadScene(0);
+
+    }
+
+    public void Restart()
+    {
+        pauseMenuUI.SetActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
     }
 

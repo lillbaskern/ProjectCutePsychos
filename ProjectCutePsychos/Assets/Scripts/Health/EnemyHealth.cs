@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] private float currentHealth;
-    [SerializeField] private float maxHealth;
+    [SerializeField] private float currentHealth = 2;
+    [SerializeField] private float maxHealth = 3;
 
     [SerializeField] private float _iFramesDuration;
     [SerializeField] private int _numberOfFlashes;
@@ -27,6 +27,10 @@ public class EnemyHealth : MonoBehaviour
         {
             Die();
         }
+    }
+    public void SetHP(int input)
+    {
+        currentHealth = Mathf.Clamp(input, 1, maxHealth);
     }
 
     void Die()

@@ -11,6 +11,8 @@ public class PlayerHealth : MonoBehaviour
     [Header("IFrames")]
     [SerializeField] private float _iFramesDuration;
     [SerializeField] private int _numberOfFlashes;
+    private bool invulnerable;
+
     private SpriteRenderer spriteRend;
 
     private void Awake()
@@ -20,15 +22,17 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int _damage)
     {
-        if ( currentHealth > 0)
+
+        if (currentHealth > 0)
         {
+            if (invulnerable) return;
             currentHealth -= _damage;
             StartCoroutine(Invulnerability());
             Debug.Log("Took Damage");
         }
         if (currentHealth <= 0)
         {
-            Die();
+            GameController.Instance.StartCoroutine(GameController.Instance.Respawn(1.2f));
             Debug.Log("Dead");
         }
     }
@@ -36,7 +40,7 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         print("You died");
-        Destroy(gameObject);
+
     }
 
     public void RestoreHealth(int _healAmount)
@@ -47,11 +51,13 @@ public class PlayerHealth : MonoBehaviour
     public void IncreaseMaxHealth(int _incraseAmount)
     {
         maxHealth += _incraseAmount;
+        PlayerPrefs.SetInt("HP", maxHealth);
     }
 
     #region IFrames
     private IEnumerator Invulnerability()
     {
+        invulnerable = true;
         Physics2D.IgnoreLayerCollision(8,9, true);
         for (int i = 0; i < _numberOfFlashes; i++)
         {
@@ -63,7 +69,17 @@ public class PlayerHealth : MonoBehaviour
 
             yield return new WaitForSeconds(_iFramesDuration / (_numberOfFlashes * 2));
         }
-        Physics2D.IgnoreLayerCollision(8, 9, false);
+        invulnerable = false;
+        Physics2D.IgnoreLayerCollision(8, 9, false); //in order for things to function on a subframe level we use the bool, but this still offers great functionality with ontriggerenter
+
     }
     #endregion
+    private void OnEnable()
+    {
+        invulnerable = false;
+        Physics2D.IgnoreLayerCollision(8, 9, false);
+        spriteRend.color = Color.white;
+        maxHealth = PlayerPrefs.GetInt("HP", 3);
+        currentHealth = maxHealth;
+    }
 }

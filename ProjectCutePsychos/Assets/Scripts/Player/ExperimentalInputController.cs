@@ -32,6 +32,7 @@ public class ExperimentalInputController : MonoBehaviour
     }
     public void OnJump(InputAction.CallbackContext context)
     {
+        if(PauseMenu.GameIsPaused) return;
         if (context.performed) _player.OnJumpInputDown();
 
         if (context.canceled) _player.OnJumpInputUp();
