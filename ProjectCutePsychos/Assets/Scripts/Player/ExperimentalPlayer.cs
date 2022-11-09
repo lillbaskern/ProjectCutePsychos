@@ -214,11 +214,11 @@ public class ExperimentalPlayer : MonoBehaviour
     {
         float targetVelocityX = directionalInput.x * moveSpeed;
         bool InputtingOppositeDirections = targetVelocityX < 0f && velocity.x > 0f || targetVelocityX > 0f && velocity.x < 0f;
-        if (Mathf.Abs(targetVelocityX) < Mathf.Abs(velocity.x) && !InputtingOppositeDirections)//if we're moving faster than the target speed and not inputting the opposite direction
-        {
-            targetVelocityX = velocity.x;
-            targetVelocityX *= 0.7f;
-        }
+        // if (Mathf.Abs(targetVelocityX) < Mathf.Abs(velocity.x) && !InputtingOppositeDirections)//if we're moving faster than the target speed and not inputting the opposite direction
+        // {
+        //     targetVelocityX = velocity.x;
+        //     targetVelocityX *= 0.7f;
+        // }
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
         velocity.y += gravity * Time.deltaTime;
     }
