@@ -5,11 +5,11 @@ using UnityEngine;
 public class EnemyPatrol : MonoBehaviour
 {
 
-    [Header("Patrol Points")]
+    [Header ("Patrol Points")]
     [SerializeField] private Transform leftEdge;
     [SerializeField] private Transform rightEdge;
-
-    [Header("Enemy")]
+    
+    [Header ("Enemy")]
     [SerializeField] private Transform enemy;
 
     [Header("Movement")]
@@ -31,15 +31,10 @@ public class EnemyPatrol : MonoBehaviour
     }
     private void Update()
     {
-        if (!enemy)
-        {
-            Destroy(this);
-            return; // enligt mentor erik behöver man returna efter en destroy
-        }
         if (moveingLeft)
         {
             if (enemy.position.x >= leftEdge.position.x)
-                MoveInDirection(-1);
+            MoveInDirection(-1);
             else
             {
                 DirectionChange();
@@ -69,7 +64,7 @@ public class EnemyPatrol : MonoBehaviour
 
         if (idleTimer > idleDuration)
 
-            moveingLeft = !moveingLeft;
+        moveingLeft = !moveingLeft;
     }
 
 
@@ -78,7 +73,7 @@ public class EnemyPatrol : MonoBehaviour
         idleTimer = 0;
         //anim.SetBool("Moving", true);
 
-        enemy.localScale = new Vector3(Mathf.Abs(initScale.x) * _direction,
+        enemy.localScale = new Vector3(Mathf.Abs(initScale.x) * _direction, 
                         initScale.y, initScale.z);
 
         enemy.position = new Vector3(enemy.position.x + Time.deltaTime * _direction * enemySpeed,

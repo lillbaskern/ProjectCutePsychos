@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Parallax : MonoBehaviour
+public class Parallax_02 : MonoBehaviour 
 {
 
     //Snapping Parallax effect to the Camera
-    private float length, startpos;
-    public GameObject cam;
+    private float lenght, startpos;
+    Transform cam;
     public float parallaxEffect;
 
     // Start is called before the first frame update
@@ -15,17 +15,17 @@ public class Parallax : MonoBehaviour
     {
         //Defining the startposition
         startpos = transform.position.x;
-        length = GetComponent<SpriteRenderer>().bounds.size.x;
+        lenght = GetComponent<SpriteRenderer>().bounds.size.x;
+        cam = Camera.main.transform;
 
 
-
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        float dist = (cam.transform.position.x * parallaxEffect);
+        float dist = cam.position.x * parallaxEffect;
 
         transform.position = new Vector3(startpos + dist, transform.position.y, transform.position.z);
     }
