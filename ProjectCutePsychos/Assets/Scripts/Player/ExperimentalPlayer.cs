@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ExperimentalPlayer : MonoBehaviour
 {
+    public static bool OnAttack;
+    public static bool AttackOff;
+
     public float maxJumpHeight = 4;
     public float minJumpHeight = 1;
     public float timeToJumpApex = .4f;
@@ -95,6 +98,14 @@ public class ExperimentalPlayer : MonoBehaviour
         }
         DirX = (int)Mathf.Sign(velocity.x);
         _playerSprite.flipX = DirX < 0;
+        if(OnAttack){
+            OnAttack = false;
+            _playerSprite.enabled = false;
+        }
+        if(AttackOff){
+            AttackOff = false;
+            _playerSprite.enabled = true;
+        }
     }
 
     public void SetDirectionalInput(Vector2 input)
@@ -192,6 +203,7 @@ public class ExperimentalPlayer : MonoBehaviour
 
     }
 
+
     public IEnumerator Boost(float speedMultiplier, float duration)
     {
         float directionX = Mathf.Sign(velocity.x);
@@ -245,6 +257,7 @@ public class ExperimentalPlayer : MonoBehaviour
 
     private void OnEnable()
     {
+        
         this.transform.position = spawnPos;//set position to spawn
         velocity = Vector2.zero;
         ResetMoveSpeed();
