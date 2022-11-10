@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ecdede8917af2242a1c4907a313b324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _delayBeforeNewScene: 2
+  _delayBeforeNewScene: 4
   _sceneNameToLoad: CreditScene
 --- !u!1 &1199427161
 GameObject:
@@ -309,7 +309,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.3670015
+  orthographic size: 4.6985087
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

@@ -2095,7 +2095,7 @@ MonoBehaviour:
   Controls: {fileID: 689313279}
   Mainmenu: {fileID: 2087999552}
   Backbutton: {fileID: 1581876084}
-  _sceneNameToLoad: 
+  _sceneNameToLoad: CreditScene
 --- !u!4 &1160098439
 Transform:
   m_ObjectHideFlags: 0
