@@ -29,13 +29,14 @@ public class PlayerBasicAttack : MonoBehaviour
         if (_attacking)
         {
             _attackArea.transform.localPosition = new Vector3(_attackAreaLocalxPos * _player.DirX, 0, 0); // player.dirX is always either 1 or -1
+            _attackArea.transform.localScale = new Vector3(0.96f *_player.DirX,0.96f,0.96f);
             _timer += Time.deltaTime;
             if (_timer >= _timeToAttack)
             {
                 _timer = 0;
                 _attacking = false;
                 _attackArea.SetActive(_attacking);
-
+                ExperimentalPlayer.AttackOff = true;
             }
         }
     }
@@ -51,6 +52,7 @@ public class PlayerBasicAttack : MonoBehaviour
     {
         if (context.performed)
         {
+            ExperimentalPlayer.OnAttack = true;
             Attack();
         }
     }

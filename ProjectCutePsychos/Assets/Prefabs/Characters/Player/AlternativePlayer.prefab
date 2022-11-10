@@ -270,7 +270,7 @@ MonoBehaviour:
   wallJumpOff: {x: 0, y: 0}
   wallLeap: {x: 0, y: 0}
   wallSlideSpeedMax: 3
-  wallStickTime: 3
+  wallStickTime: 0.3
   DirX: 0
   dashSpeedX: 0
   dashSpeedY: 0
