@@ -78,7 +78,8 @@ public class PlayerHealth : MonoBehaviour
         invulnerable = false;
         Physics2D.IgnoreLayerCollision(8, 9, false);
         spriteRend.color = Color.white;
-        maxHealth = PlayerPrefs.GetInt("HP", 3);
+        // maxHealth = PlayerPrefs.GetInt("HP", 3); //commenting this out for now
+        maxHealth = 3;
         currentHealth = maxHealth;
     }
 }
