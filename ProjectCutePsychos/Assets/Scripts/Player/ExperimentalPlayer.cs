@@ -50,8 +50,9 @@ public class ExperimentalPlayer : MonoBehaviour
     private SpriteRenderer _playerSprite;
 
     Vector2 spawnPos;
-    public Vector2 SpawnPos{
-        get{ return spawnPos;}
+    public Vector2 SpawnPos
+    {
+        get { return spawnPos; }
     }
 
     void Awake()
@@ -94,15 +95,28 @@ public class ExperimentalPlayer : MonoBehaviour
         {
             _playerSprite.flipX = controller.collisions.left ? false : true;
             DirX = controller.collisions.left ? 1 : -1;
+            if (OnAttack)
+            {
+                OnAttack = false;
+                _playerSprite.enabled = false;
+            }
+            if (AttackOff)
+            {
+                AttackOff = false;
+                _playerSprite.enabled = true;
+            }
             return;
+
         }
         DirX = (int)Mathf.Sign(velocity.x);
         _playerSprite.flipX = DirX < 0;
-        if(OnAttack){
+        if (OnAttack)
+        {
             OnAttack = false;
             _playerSprite.enabled = false;
         }
-        if(AttackOff){
+        if (AttackOff)
+        {
             AttackOff = false;
             _playerSprite.enabled = true;
         }
@@ -251,13 +265,13 @@ public class ExperimentalPlayer : MonoBehaviour
     public void SetSpawnPos(Vector2 pos)
     {
         Debug.Log("spawn set");
-        if(spawnPos != pos)
+        if (spawnPos != pos)
             spawnPos = pos;
     }
 
     private void OnEnable()
     {
-        
+
         this.transform.position = spawnPos;//set position to spawn
         velocity = Vector2.zero;
         ResetMoveSpeed();
