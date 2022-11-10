@@ -178,7 +178,18 @@
                 {
                     "name": "",
                     "id": "106a5e63-2f62-47bb-b339-b29f44f7fdec",
-                    "path": "<Keyboard>/j",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "93d41b23-1da9-43f7-9474-637afc30d6a1",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

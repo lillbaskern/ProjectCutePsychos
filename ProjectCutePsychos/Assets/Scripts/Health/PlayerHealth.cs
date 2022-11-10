@@ -13,10 +13,12 @@ public class PlayerHealth : MonoBehaviour
     private bool invulnerable;
 
     private SpriteRenderer spriteRend;
+    private SpriteRenderer attackSpriteRend;
 
     private void Awake()
     {
         spriteRend = GetComponent<SpriteRenderer>();
+        attackSpriteRend = this.transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
 
     public void TakeDamage(int _damage)
@@ -61,10 +63,13 @@ public class PlayerHealth : MonoBehaviour
         for (int i = 0; i < _numberOfFlashes; i++)
         {
             spriteRend.color = new Color(1, 0, 0, 0.5f);
+            attackSpriteRend.color = new Color(1, 0, 0, 0.5f);
+            
 
             yield return new WaitForSeconds(_iFramesDuration / (_numberOfFlashes * 2));
 
             spriteRend.color = Color.white;
+            attackSpriteRend.color = Color.white;
 
             yield return new WaitForSeconds(_iFramesDuration / (_numberOfFlashes * 2));
         }
@@ -75,9 +80,11 @@ public class PlayerHealth : MonoBehaviour
     #endregion
     private void OnEnable()
     {
+
         invulnerable = false;
         Physics2D.IgnoreLayerCollision(8, 9, false);
         spriteRend.color = Color.white;
+        attackSpriteRend.color = Color.white;        
         // maxHealth = PlayerPrefs.GetInt("HP", 3); //commenting this out for now
         maxHealth = 3;
         currentHealth = maxHealth;
