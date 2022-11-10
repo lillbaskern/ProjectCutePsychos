@@ -141,8 +141,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 3
   maxHealth: 3
-  _iFramesDuration: 0.05
-  _numberOfFlashes: 3
+  _iFramesDuration: 0.61
+  _numberOfFlashes: 5
   spriteRend: {fileID: 0}
 --- !u!1 &2329381099262672795
 GameObject:
@@ -232,7 +232,7 @@ Transform:
   m_GameObject: {fileID: 2329381100087780128}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.870312, y: -3.1, z: -0.5648549}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2329381099756424047}

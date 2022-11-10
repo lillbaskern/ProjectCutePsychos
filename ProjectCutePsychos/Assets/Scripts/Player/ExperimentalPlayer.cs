@@ -50,6 +50,8 @@ public class ExperimentalPlayer : MonoBehaviour
     private SpriteRenderer _playerSprite;
 
     Vector2 spawnPos;
+    private int lastDirX;
+
     public Vector2 SpawnPos
     {
         get { return spawnPos; }
@@ -108,7 +110,10 @@ public class ExperimentalPlayer : MonoBehaviour
             return;
 
         }
-        DirX = (int)Mathf.Sign(velocity.x);
+        
+        //if velocity x is 0 make dirx the last not zero direction
+        DirX = velocity.x == 0 ? lastDirX: (int)Mathf.Sign(velocity.x); 
+
         _playerSprite.flipX = DirX < 0;
         if (OnAttack)
         {
@@ -120,6 +125,7 @@ public class ExperimentalPlayer : MonoBehaviour
             AttackOff = false;
             _playerSprite.enabled = true;
         }
+        lastDirX = DirX;
     }
 
     public void SetDirectionalInput(Vector2 input)

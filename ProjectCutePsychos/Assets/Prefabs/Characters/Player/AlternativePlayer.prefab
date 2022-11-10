@@ -429,6 +429,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: AttackArea
       objectReference: {fileID: 0}
+    - target: {fileID: 5968624817618485316, guid: 38a970c021d6f5f4db10ff68444a7ddb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5968624817618485316, guid: 38a970c021d6f5f4db10ff68444a7ddb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5968624817618485317, guid: 38a970c021d6f5f4db10ff68444a7ddb, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -512,6 +520,10 @@ PrefabInstance:
     - target: {fileID: 5968624817618485318, guid: 38a970c021d6f5f4db10ff68444a7ddb, type: 3}
       propertyPath: m_Color.r
       value: 0.7686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 5968624817618485318, guid: 38a970c021d6f5f4db10ff68444a7ddb, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5968624817618485319, guid: 38a970c021d6f5f4db10ff68444a7ddb, type: 3}
       propertyPath: m_Size.x

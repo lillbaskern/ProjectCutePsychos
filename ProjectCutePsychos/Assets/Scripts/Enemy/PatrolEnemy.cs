@@ -7,10 +7,13 @@ public class PatrolEnemy : MonoBehaviour
 {
     
     [SerializeField] private int _damage = 1;
+    private EnemyHealth me;//parent's instance of enemyhealth script
+    
     public PlayerHealth playerHP;
 
     public void Awake()
     {
+        me = this.transform.GetComponent<EnemyHealth>();
         Collider2D col = GetComponent<Collider2D>();
         if (!col)
         {
@@ -24,7 +27,7 @@ public class PatrolEnemy : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" && (!me || me.IsFlashing))
         {
             playerHP.TakeDamage(_damage);
         }

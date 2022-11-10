@@ -10,6 +10,8 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private int _numberOfFlashes;
     [SerializeField] private SpriteRenderer spriteRend;
 
+    public bool IsFlashing { get; private set; }
+
     private void Awake()
     {
         spriteRend = GetComponent<SpriteRenderer>();
@@ -40,6 +42,7 @@ public class EnemyHealth : MonoBehaviour
 
     private IEnumerator DamageVisual()
     {
+        IsFlashing = true;
         for (int i = 0; i < _numberOfFlashes; i++)
         {
             spriteRend.color = new Color(1, 0, 0, 0.5f);
@@ -50,5 +53,6 @@ public class EnemyHealth : MonoBehaviour
 
             yield return new WaitForSeconds(_iFramesDuration / (_numberOfFlashes * 2));
         }
+        IsFlashing = false;
     }
 }
