@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ExperimentalPlayer : MonoBehaviour
 {
+    public static bool OnAttack;
+    public static bool AttackOff;
+
     public float maxJumpHeight = 4;
     public float minJumpHeight = 1;
     public float timeToJumpApex = .4f;
@@ -47,6 +50,10 @@ public class ExperimentalPlayer : MonoBehaviour
     private SpriteRenderer _playerSprite;
 
     Vector2 spawnPos;
+    public Vector2 SpawnPos
+    {
+        get { return spawnPos; }
+    }
 
     void Awake()
     {
@@ -88,10 +95,31 @@ public class ExperimentalPlayer : MonoBehaviour
         {
             _playerSprite.flipX = controller.collisions.left ? false : true;
             DirX = controller.collisions.left ? 1 : -1;
+            if (OnAttack)
+            {
+                OnAttack = false;
+                _playerSprite.enabled = false;
+            }
+            if (AttackOff)
+            {
+                AttackOff = false;
+                _playerSprite.enabled = true;
+            }
             return;
+
         }
         DirX = (int)Mathf.Sign(velocity.x);
         _playerSprite.flipX = DirX < 0;
+        if (OnAttack)
+        {
+            OnAttack = false;
+            _playerSprite.enabled = false;
+        }
+        if (AttackOff)
+        {
+            AttackOff = false;
+            _playerSprite.enabled = true;
+        }
     }
 
     public void SetDirectionalInput(Vector2 input)
@@ -189,6 +217,7 @@ public class ExperimentalPlayer : MonoBehaviour
 
     }
 
+
     public IEnumerator Boost(float speedMultiplier, float duration)
     {
         float directionX = Mathf.Sign(velocity.x);
@@ -235,14 +264,17 @@ public class ExperimentalPlayer : MonoBehaviour
 
     public void SetSpawnPos(Vector2 pos)
     {
-        if(spawnPos != pos)
+        Debug.Log("spawn set");
+        if (spawnPos != pos)
             spawnPos = pos;
     }
 
     private void OnEnable()
     {
+
         this.transform.position = spawnPos;//set position to spawn
         velocity = Vector2.zero;
         ResetMoveSpeed();
     }
+
 }

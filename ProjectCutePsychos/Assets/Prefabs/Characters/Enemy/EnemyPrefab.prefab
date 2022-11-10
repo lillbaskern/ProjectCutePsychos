@@ -51,7 +51,7 @@ BoxCollider2D:
   m_Offset: {x: 0.03897041, y: -0.323182}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.57, y: 0.5}
     oldSize: {x: 3.29, y: 3.48}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
-  PlayerHP: {fileID: 0}
+  playerHP: {fileID: 0}
 --- !u!114 &1271169556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,6 +141,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 3
   maxHealth: 3
+  _iFramesDuration: 0.05
+  _numberOfFlashes: 3
+  spriteRend: {fileID: 0}
 --- !u!1 &2329381099262672795
 GameObject:
   m_ObjectHideFlags: 0
