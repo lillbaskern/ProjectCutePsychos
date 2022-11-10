@@ -1730,26 +1730,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1253703077, guid: 99110a50606c1484086f8ef404d2f2fa, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5168116918200691751, guid: 99110a50606c1484086f8ef404d2f2fa, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 104
-      objectReference: {fileID: 0}
-    - target: {fileID: 5168116918299255454, guid: 99110a50606c1484086f8ef404d2f2fa, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5168116918420133273, guid: 99110a50606c1484086f8ef404d2f2fa, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -118
-      objectReference: {fileID: 0}
-    - target: {fileID: 5168116919109622422, guid: 99110a50606c1484086f8ef404d2f2fa, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -3
-      objectReference: {fileID: 0}
     - target: {fileID: 5168116919832462313, guid: 99110a50606c1484086f8ef404d2f2fa, type: 3}
       propertyPath: m_Name
       value: PauseMenuCanvas
@@ -1837,10 +1817,6 @@ PrefabInstance:
     - target: {fileID: 5168116919832462317, guid: 99110a50606c1484086f8ef404d2f2fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5168116920149647986, guid: 99110a50606c1484086f8ef404d2f2fa, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99110a50606c1484086f8ef404d2f2fa, type: 3}
