@@ -59,7 +59,7 @@ BoxCollider2D:
   m_Offset: {x: 0.0037845671, y: -0.38428628}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.65, y: 0.5}
     oldSize: {x: 2.28, y: 2.27}
     newSize: {x: 2.0625, y: 2}
     adaptiveTilingThreshold: 0.5
@@ -267,15 +267,15 @@ MonoBehaviour:
   accelerationTimeAirborne: 0.2
   accelerationTimeGrounded: 0.1
   moveSpeed: 8
-  wallJumpClimb: {x: 10, y: 10}
+  wallJumpClimb: {x: 0, y: 0}
   wallJumpOff: {x: 0, y: 0}
-  wallLeap: {x: 10, y: 15}
+  wallLeap: {x: 0, y: 0}
   wallSlideSpeedMax: 3
-  wallStickTime: 0.2
+  wallStickTime: 3
   DirX: 0
-  dashSpeedX: 8
-  dashSpeedY: 2
-  dashCooldown: 3
+  dashSpeedX: 0
+  dashSpeedY: 0
+  dashCooldown: 0
   MaxDoubleJumps: 0
   dontPollInputs: 0
 --- !u!114 &4551558318147140254
@@ -515,11 +515,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5968624817618485319, guid: 38a970c021d6f5f4db10ff68444a7ddb, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.25
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 5968624817618485319, guid: 38a970c021d6f5f4db10ff68444a7ddb, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.28125
+      value: 0.41
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38a970c021d6f5f4db10ff68444a7ddb, type: 3}
