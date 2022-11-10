@@ -47,6 +47,9 @@ public class ExperimentalPlayer : MonoBehaviour
     private SpriteRenderer _playerSprite;
 
     Vector2 spawnPos;
+    public Vector2 SpawnPos{
+        get{ return spawnPos;}
+    }
 
     void Awake()
     {
@@ -235,6 +238,7 @@ public class ExperimentalPlayer : MonoBehaviour
 
     public void SetSpawnPos(Vector2 pos)
     {
+        Debug.Log("spawn set");
         if(spawnPos != pos)
             spawnPos = pos;
     }
@@ -245,4 +249,5 @@ public class ExperimentalPlayer : MonoBehaviour
         velocity = Vector2.zero;
         ResetMoveSpeed();
     }
+
 }

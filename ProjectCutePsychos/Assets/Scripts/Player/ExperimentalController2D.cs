@@ -66,6 +66,7 @@ public class ExperimentalController2D : PlayerRays
 			if (hit) {
 
 				if (hit.distance == 0) {
+					moveAmount.x = 0;
 					continue;
 				}
 

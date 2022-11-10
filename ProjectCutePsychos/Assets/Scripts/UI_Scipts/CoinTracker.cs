@@ -12,16 +12,25 @@ public class CoinTracker : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+        coinText = GameObject.Find("CoinText").GetComponent<TMP_Text>();
     }
     private void Start()
     {
+
         coinText.text = "X: " + currentCoins.ToString();
     }
     public void IncreaseCoins(int coins)
     {
         currentCoins += coins;
-        coinText.text = "X: "+ currentCoins.ToString();
+        coinText.text = "X: " + currentCoins.ToString();
     }
 
 }

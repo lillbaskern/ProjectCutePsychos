@@ -1,22 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class TimerTest : MonoBehaviour
 {
-    int i = 0;
+    //int i = 0;
+    int seconds;
+    int minutes;
+
+    TextMeshProUGUI text;
     void Start()
     {
-        Debug.Log(Time.time);
+        text = GameObject.Find("TimerText").GetComponent<TextMeshProUGUI>();
+    }
+
+    private void Update()
+    {
+        minutes = (int)Time.time / 60;
+        seconds = (int)Time.time % 60;
+        text.SetText($"{minutes}m{seconds}s");
     }
 
     void FixedUpdate()
     {
-        Debug.Log(i%2);
-        if (i % 2 == 0)
-        {
-            Debug.Log(Time.time);
-        }
-        i++;
+
     }
 }
