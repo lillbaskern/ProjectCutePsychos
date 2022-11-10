@@ -27,7 +27,7 @@ public class PatrolEnemy : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && (!me || me.IsFlashing))
+        if (collision.tag == "Player" && (!me || !me.IsFlashing))
         {
             playerHP.TakeDamage(_damage);
         }

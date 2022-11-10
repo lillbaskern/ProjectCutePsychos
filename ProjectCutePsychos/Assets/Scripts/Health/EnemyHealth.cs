@@ -45,6 +45,10 @@ public class EnemyHealth : MonoBehaviour
         IsFlashing = true;
         for (int i = 0; i < _numberOfFlashes; i++)
         {
+            if (i <= _numberOfFlashes  * 0.3)
+            {
+                IsFlashing = false;
+            }
             spriteRend.color = new Color(1, 0, 0, 0.5f);
 
             yield return new WaitForSeconds(_iFramesDuration / (_numberOfFlashes * 2));
@@ -53,6 +57,5 @@ public class EnemyHealth : MonoBehaviour
 
             yield return new WaitForSeconds(_iFramesDuration / (_numberOfFlashes * 2));
         }
-        IsFlashing = false;
     }
 }
