@@ -5688,8 +5688,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7668226856326277618, guid: ac455a4d2386e8f4baf853cbda100ff9, type: 3}
       propertyPath: m_text
-      value: "There is several paths you can take\n\n\n      Press \"W\" to attack
-        and break walls"
+      value: "There is several paths you can take\n\n\n\n      Press \"Shift\" or
+        left mouse button to attack and break walls"
       objectReference: {fileID: 0}
     - target: {fileID: 7668226856326277618, guid: ac455a4d2386e8f4baf853cbda100ff9, type: 3}
       propertyPath: m_margin.z
@@ -5697,11 +5697,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7668226856326277620, guid: ac455a4d2386e8f4baf853cbda100ff9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 5.77
+      value: 5.62
       objectReference: {fileID: 0}
     - target: {fileID: 7668226856326277620, guid: ac455a4d2386e8f4baf853cbda100ff9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 4.59
+      value: 6.07
       objectReference: {fileID: 0}
     - target: {fileID: 7668226856326277621, guid: ac455a4d2386e8f4baf853cbda100ff9, type: 3}
       propertyPath: m_SortingOrder
@@ -12496,11 +12496,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7668226856326277618, guid: ac455a4d2386e8f4baf853cbda100ff9, type: 3}
       propertyPath: m_text
-      value: Press "W" to attack the enemies
+      value: Press "Shift" or left mouse button to attack the enemies
       objectReference: {fileID: 0}
     - target: {fileID: 7668226856326277618, guid: ac455a4d2386e8f4baf853cbda100ff9, type: 3}
       propertyPath: m_margin.y
-      value: 0.4356842
+      value: -0.20641708
       objectReference: {fileID: 0}
     - target: {fileID: 7668226856326277618, guid: ac455a4d2386e8f4baf853cbda100ff9, type: 3}
       propertyPath: m_margin.z
@@ -12508,11 +12508,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7668226856326277620, guid: ac455a4d2386e8f4baf853cbda100ff9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -2.67
+      value: -3.27
       objectReference: {fileID: 0}
     - target: {fileID: 7668226856326277620, guid: ac455a4d2386e8f4baf853cbda100ff9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 5.61
+      value: 4.65
       objectReference: {fileID: 0}
     - target: {fileID: 7668226856326277623, guid: ac455a4d2386e8f4baf853cbda100ff9, type: 3}
       propertyPath: m_IsActive
