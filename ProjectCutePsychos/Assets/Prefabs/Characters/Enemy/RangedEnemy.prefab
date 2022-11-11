@@ -53,7 +53,7 @@ BoxCollider2D:
   m_Offset: {x: 0.13418719, y: -0.37766862}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.57, y: 0.5}
     oldSize: {x: 3.29, y: 3.48}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
@@ -127,8 +127,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71450db333604874598b4721bc845e83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 3
-  maxHealth: 3
+  currentHealth: 1
+  maxHealth: 1
+  _iFramesDuration: 0
+  _numberOfFlashes: 0
+  spriteRend: {fileID: 0}
 --- !u!114 &3486086927236044140
 MonoBehaviour:
   m_ObjectHideFlags: 0

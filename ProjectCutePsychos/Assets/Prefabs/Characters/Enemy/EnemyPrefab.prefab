@@ -139,8 +139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71450db333604874598b4721bc845e83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 3
-  maxHealth: 3
+  currentHealth: 1
+  maxHealth: 1
   _iFramesDuration: 0.61
   _numberOfFlashes: 5
   spriteRend: {fileID: 0}
