@@ -52,6 +52,8 @@ public class ExperimentalPlayer : MonoBehaviour
     Vector2 spawnPos;
     private int lastDirX;
 
+    [SerializeField] private Animator _anim;
+
     public Vector2 SpawnPos
     {
         get { return spawnPos; }
@@ -62,13 +64,21 @@ public class ExperimentalPlayer : MonoBehaviour
         baseMoveSpeed = moveSpeed;
         controller = GetComponent<ExperimentalController2D>();
         _playerSprite = GetComponent<SpriteRenderer>();
+        _anim = GetComponent<Animator>();
         input = GetComponent<ExperimentalInputController>();
         availableDoubleJumps = MaxDoubleJumps;
+
 
         gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
         spawnPos = this.transform.position;
+    }
+
+    private void FixedUpdate()
+    {
+        _anim.SetBool("Running", velocity.x > 1 || velocity.x < -1);
+        _anim.SetBool("Jumping", velocity.y != 0);
     }
 
     void Update()
