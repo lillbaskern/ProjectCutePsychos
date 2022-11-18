@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent (typeof (ExperimentalInputController),typeof(ExperimentalController2D))]
 public class ExperimentalPlayer : MonoBehaviour
 {
+    //I did not declare these vars i follow naming conventions!! (from Elias)
     public static bool OnAttack;
     public static bool AttackOff;
 

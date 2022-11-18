@@ -9,6 +9,7 @@ public class PlayerRays : MonoBehaviour {
 	
 	public const float skinWidth = .015f;
 	const float _dstBetweenRays = .25f;
+	
 	[HideInInspector]
 	public int horizontalRayCount;
 	[HideInInspector]
@@ -34,8 +35,11 @@ public class PlayerRays : MonoBehaviour {
 
 	public void UpdateRaycastOrigins() {
 		Bounds bounds = boxCollider.bounds;
-		bounds.Expand (skinWidth * -2);//"expand" by skinwidth * -2 in order to SHRINK the bounds of the box by skinwidth 
-		
+
+		//"expand" by skinwidth * -2 in order to shrink the collider's bounds on both the y and x-axis to prevent-
+		//the character sprite from e.g. seemingly floating above the ground
+		bounds.Expand (skinWidth * -2);
+		//set raycastOrigins to the different bounds corners.
 		raycastOrigins.bottomLeft = new Vector2 (bounds.min.x, bounds.min.y);
 		raycastOrigins.bottomRight = new Vector2 (bounds.max.x, bounds.min.y);
 		raycastOrigins.topLeft = new Vector2 (bounds.min.x, bounds.max.y);
@@ -58,8 +62,9 @@ public class PlayerRays : MonoBehaviour {
 	}
 	
     //Struct for all the vector2 positions which will be where the rays originate from
+	//is updated in experimentalplayer.cs in the beginning of each Update()
 	public struct RaycastOrigins {
-		public Vector2 topLeft, topRight;//dont even think we'll necessary need these, but theyre good to have around anyways
+		public Vector2 topLeft, topRight;
 		public Vector2 bottomLeft, bottomRight;
 	}
 }

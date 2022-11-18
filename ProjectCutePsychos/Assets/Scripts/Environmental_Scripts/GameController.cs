@@ -6,7 +6,7 @@ using UnityEngine;
 //class which is meant to control different aspects of the overarching game state
 public class GameController : MonoBehaviour
 {
-    bool init = false;
+    bool init = false; // is the class initialized?
     private static GameController instance = null;
     public static GameController Instance
     {
@@ -25,6 +25,7 @@ public class GameController : MonoBehaviour
     public static bool IsInitialized => instance;
     public Transform Player;
 
+    //we want 
     void Start()
     {
         Init();
@@ -45,13 +46,8 @@ public class GameController : MonoBehaviour
             Instance = this;
         }
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        Debug.Log(Player);
     }
 
-    void Update()
-    {
-
-    }
 
     //<Summary>
     //Coroutine which respawns the player by setting the player as inactive, then waiting for "delay" amount of time, then reactivating the player

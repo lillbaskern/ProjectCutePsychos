@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent (typeof (ExperimentalController2D))]
+
+[RequireComponent (typeof (ExperimentalInputController))]
+[RequireComponent(typeof(ExperimentalPlayer))]
+//the "controller" part of the character controller.
 public class ExperimentalController2D : PlayerRays
 {
 
@@ -10,9 +13,8 @@ public class ExperimentalController2D : PlayerRays
 	public CollisionInfo collisions;
 	[HideInInspector]
 	public Vector2 playerInput;
-    private Rigidbody2D _rb2d;
 	public override void Start() {
-        _rb2d = GetComponent<Rigidbody2D>();
+
 		base.Start ();
 		collisions.faceDir = 1;
 
@@ -23,7 +25,7 @@ public class ExperimentalController2D : PlayerRays
 	}
 
 	public void Move(Vector2 moveAmount, Vector2 input, bool standingOnPlatform = false) {
-		UpdateRaycastOrigins ();
+		UpdateRaycastOrigins();
 
 		collisions.Reset ();
 		collisions.moveAmountOld = moveAmount;
@@ -42,7 +44,6 @@ public class ExperimentalController2D : PlayerRays
 			VerticalCollisions (ref moveAmount);
 		}
 		transform.Translate  (moveAmount);
-        //_rb2d.velocity = moveAmount;
 
 		if (standingOnPlatform) {
 			collisions.below = true;
@@ -100,9 +101,12 @@ public class ExperimentalController2D : PlayerRays
 			}
 		}
 	}
-
+	//SUMMARY:
+	//Method which handles vertical collisions. 
 	void VerticalCollisions(ref Vector2 moveAmount) {
+		//get the current Y direction
 		float directionY = Mathf.Sign (moveAmount.y);
+		//set ray 
 		float rayLength = Mathf.Abs (moveAmount.y) + skinWidth;
 
 		for (int i = 0; i < verticalRayCount; i ++) {

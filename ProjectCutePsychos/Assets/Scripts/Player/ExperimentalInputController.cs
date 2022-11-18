@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+//Dependencies
+[RequireComponent (typeof (ExperimentalController2D))]
+[RequireComponent(typeof(ExperimentalPlayer))]
+
+//Summary
+//as the player controller used was a bit older it depended on the older unity input system. This class is a slight rewrite to get it functioning with
+//the newer one.
 public class ExperimentalInputController : MonoBehaviour
 {
     PlayerInput playerInput;
